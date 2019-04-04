@@ -1,6 +1,6 @@
 <template>
     <div class="page-tabs">
-        <File :file-name="$store.state.currentFileName" to="/" :icon="$store.state.currentFileIcon" :icon-color="$store.state.currentFileColor"></File>
+        <File :file-name="$store.state.currentFileName" :icon="$store.state.currentFileIcon" :icon-color="$store.state.currentFileColor"></File>
     </div>
 </template>
 

@@ -1,3 +1,6 @@
+@import '~bootstrap/dist/css/bootstrap-grid.min.css';
+@import 'transitions-and-animations.scss';
+
 body,html {
   height: 100%;
   margin: 0;
@@ -32,4 +35,12 @@ body,html {
 
 .vue-typer .custom.char {
   color: rgb(220,220,200);
+}
+
+.clickable {
+  text-decoration: underline;
+  color: forestgreen;
+}
+.clickable:hover {
+  cursor: pointer;
 }

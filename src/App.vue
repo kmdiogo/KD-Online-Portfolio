@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper" @mouseup="onMouseUp" @mousemove="onMouseMove" @mouseleave="onMouseUp">
-        <TheToolbar class="the-toolbar-wrapper"></TheToolbar>
+        <TheToolbar class="the-toolbar-wrapper flex-shrink-0"></TheToolbar>
 
         <div class="content-wrapper">
             <ResizableContainer initial-width="250px" class="the-navigator-wrapper">
@@ -8,13 +8,15 @@
             </ResizableContainer>
 
             <div class="page-wrapper">
-                <PageTabs></PageTabs>
-                <router-view />
+                <PageTabs class="flex-shrink-0"></PageTabs>
+                <transition name="fade" mode="out-in">
+                    <router-view class="flex-grow-1" style="overflow: auto; height: 0px;" />
+                </transition>
             </div>
 
         </div>
 
-        <TheFootbar class="the-footbar-wrapper"></TheFootbar>
+        <TheFootbar class="the-footbar-wrapper flex-shrink-0"></TheFootbar>
     </div>
 </template>
 
@@ -73,8 +75,9 @@
     .page-wrapper {
         display: flex;
         flex-direction: column;
-        background-color: $interior-bg;
         flex-grow: 1;
+        background-color: $interior-bg;
+        overflow: auto
     }
 
     .the-footbar-wrapper {
