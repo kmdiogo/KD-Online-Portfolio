@@ -85,4 +85,10 @@
         background-color: $exterior-bg;
         border: $bar-border;
     }
+
+    @media (max-width: 768px) {
+        .the-navigator-wrapper {
+            display: none !important;
+        }
+    }
 </style>

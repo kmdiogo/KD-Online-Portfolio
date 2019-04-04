@@ -1,6 +1,6 @@
 <template>
     <div class="page-tabs">
-        <File :file-name="$store.state.currentFileName" :icon="$store.state.currentFileIcon" :icon-color="$store.state.currentFileColor"></File>
+        <File class="page-tab-file-wrapper" :file-name="$store.state.currentFileName" :icon="$store.state.currentFileIcon" :icon-color="$store.state.currentFileColor"></File>
     </div>
 </template>
 
@@ -20,5 +20,8 @@
         align-items: center;
         border-bottom: $bar-border;
         background-color: $exterior-bg;
+    }
+    .page-tab-file-wrapper {
+        border: 1px solid gray;
     }
 </style>

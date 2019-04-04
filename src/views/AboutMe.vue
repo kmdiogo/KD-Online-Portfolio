@@ -1,12 +1,13 @@
 <template>
     <!-- TODO: Fix sizing issues with images -->
-    <div class="container-fluid about-me">
+    <div class="about-me">
+        <img class="media-bg about-me-bg" src="../assets/media/AboutMeBg.jpg" />
         <div class="row" style="height: 100%;">
             <div class="col-md-6">
-                <div class="h-super1" style="color: forestgreen">About Me</div>
+                <div class="h-super1" style="color: forestgreen;">About Me</div>
                 <hr />
                 <p>Hi, my name is Kenny Diogo!</p>
-                <p>I am currently studying Computer Science at Youngstown State University</p>
+                <p>I am currently studying Computer Science at Youngstown State University.</p>
                 <p>I am an avid Coder with a passion for problem solving and creating awesome things.
                     I have a particular interest in Web Development and Machine Learning (I ideally love work that is an intersection of the two fields), but I really enjoy any kind of work
                     that demands critical thinking, problem solving, and creative solutions.
@@ -27,6 +28,9 @@
                 </ul>
             </div>
             <div class="col-md-6 media-column">
+                <div class="h-super1" style="text-align: left; width: 100%; color: darkslateblue">Media</div>
+                <hr style="width: 100%;" />
+
                 <div class="head-shot-wrapper">
                     <img class="head-shot" src="../assets/media/Head_Shot.jpg" />
                     <span style="text-align: center;">Me.jpg</span>
@@ -37,7 +41,7 @@
                         <video autoplay muted loop class="breakdance-video">
                             <source src="../assets/media/Breakdancing.mp4" type="video/mp4">
                         </video>
-                        <span>Breakdance.mp4</span>
+                        <span>:)</span>
                     </div>
                 </transition>
             </div>
@@ -68,37 +72,38 @@
     @import '../assets/styles/variables.scss';
     .about-me {
         color: $text-color-primary;
+        padding: 25px;
+        position: relative;
+    }
+    .about-me-bg {
+        opacity: 0.15
     }
     .head-shot {
-        width: 50%;
-        border-radius: 25%;
+        min-height: 0;
+        width: 300px;
     }
     .head-shot-wrapper {
-        height: 50%;
+        height: 300px;
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
     }
     .media-column {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
     }
     .breakdance-video {
-        width: 50%;
-        -webkit-border-radius: 25%;
-        -moz-border-radius: 25%;
-        border-radius: 25%;
+        width: 300px;
     }
     .breakdance-video-wrapper {
-        height: 50%;
+        height: 300px;
         width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
     }
 </style>
