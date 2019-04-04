@@ -1,12 +1,17 @@
 <template>
-    <div class="wrapper" @mouseup="onMouseUp">
+    <div class="wrapper" @mouseup="onMouseUp" @mousemove="onMouseMove" @mouseleave="onMouseUp">
         <TheToolbar class="the-toolbar-wrapper"></TheToolbar>
 
         <div class="content-wrapper">
             <ResizableContainer initial-width="250px" class="the-navigator-wrapper">
                 <TheNavigator></TheNavigator>
             </ResizableContainer>
-            <router-view class="page-wrapper" />
+
+            <div class="page-wrapper">
+                <PageTabs></PageTabs>
+                <router-view />
+            </div>
+
         </div>
 
         <TheFootbar class="the-footbar-wrapper"></TheFootbar>
@@ -17,26 +22,27 @@
     import TheToolbar from "@/components/TheToolbar";
     import TheFootbar from "@/components/TheFootbar";
     import TheNavigator from "@/components/TheNavigator";
-    import ResizableContainer from "@/components/ResizableContainer";
+    import ResizableContainer from "@/components/shared/ResizableContainer";
     import {EventBus} from "@/event-bus";
+    import {throttle} from 'lodash'
+    import PageTabs from "./components/PageTabs";
+
     export default {
-        components: {ResizableContainer, TheNavigator, TheFootbar, TheToolbar},
+        components: {PageTabs, ResizableContainer, TheNavigator, TheFootbar, TheToolbar},
         methods: {
             onMouseUp() {
                 EventBus.$emit('globalMouseUp');
-                console.log("Up!");
-            }
+            },
+            onMouseMove: throttle((e) => {
+                EventBus.$emit('globalMouseMove', e);
+            }, 20),
         }
     }
 </script>
 
 <style lang="scss">
     @import "assets/styles/main";
-    $exterior-bg: #3c3f41;
-    $interior-bg: #252627;
-    //$interior-bg: #181818;
-
-    $bar-border: 1px solid rgb(25,25,25);
+    @import "assets/styles/variables";
 
     .wrapper {
         display: flex;
@@ -61,9 +67,12 @@
         //overflow: auto;
         //background-color: #252627;
         background-color: $exterior-bg;
+        flex-shrink: 0;
     }
 
     .page-wrapper {
+        display: flex;
+        flex-direction: column;
         background-color: $interior-bg;
         flex-grow: 1;
     }

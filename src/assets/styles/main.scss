@@ -1,4 +1,35 @@
 body,html {
   height: 100%;
   margin: 0;
+  font-family: "Courier", monospace;
+}
+
+.router-link:hover {
+  cursor: pointer;
+  color: darkgray;
+}
+
+.router-link-exact-active {
+  background-color: darkslategrey;
+}
+
+.media-bg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.h-super1 {
+  font-size: 4rem;
+}
+
+.h-super2 {
+  font-size: 3rem;
+}
+
+.vue-typer .custom.char {
+  color: rgb(220,220,200);
 }

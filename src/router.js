@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import LandingPage from './views/LandingPage'
+import Welcome from './views/Welcome'
 
 Vue.use(Router);
 
@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: LandingPage
+      component: Welcome
     },
   ]
 })
