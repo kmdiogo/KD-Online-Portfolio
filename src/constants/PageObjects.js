@@ -1,7 +1,7 @@
 export let WelcomeObj =  {
     name: 'Welcome',
     fileName: 'Welcome.html',
-    icon: 'far fa-file-code',
+    icon: 'fas fa-file-code',
     iconColor: 'darkorange',
     to: '/'
 };
@@ -9,7 +9,7 @@ export let WelcomeObj =  {
 export let AboutMeObj = {
     name: 'AboutMe',
     fileName: 'AboutMe.html',
-    icon: 'far fa-file-code',
+    icon: 'fas fa-file-code',
     iconColor: 'darkorange',
     to: '/AboutMe'
 };
@@ -17,7 +17,7 @@ export let AboutMeObj = {
 export let SkillsObj = {
     name: 'Skills',
     fileName: 'Skills.html',
-    icon: 'far fa-slide-code',
+    icon: 'fas fa-file-code',
     iconColor: 'darkorange',
     to: '/Skills'
 }
@@ -25,6 +25,6 @@ export let SkillsObj = {
 export let CommandsObj = {
     name: 'Commands',
     fileName: 'Commands.txt',
-    icon: 'far fa-slide-code',
+    icon: 'fas fa-file-alt',
     to: '/Commands'
 }

@@ -20,6 +20,8 @@
 
 <script>
     import {VueTyper} from 'vue-typer'
+    import {WelcomeObj} from "../constants/PageObjects";
+
     export default {
         components: {
             VueTyper
@@ -31,13 +33,7 @@
                 vm.$store.commit('updateCurrentFileIcon', 'far fa-file-code');
                 vm.$store.commit('updateCurrentFileColor', 'darkorange')*/
 
-                vm.$store.commit('addTabToHistory', {
-                    name: 'Welcome',
-                    fileName: 'Welcome.html',
-                    icon: 'far fa-file-code',
-                    iconColor: 'darkorange',
-                    to: '/'
-                });
+                vm.$store.commit('addTabToHistory', WelcomeObj);
             })
         }
     }

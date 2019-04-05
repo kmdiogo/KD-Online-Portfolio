@@ -58,6 +58,8 @@
 </template>
 
 <script>
+    import {AboutMeObj} from "../constants/PageObjects";
+
     export default {
         name: "AboutMe",
         data() {
@@ -70,16 +72,7 @@
                 /*vm.$store.commit('updateCurrentFileName', 'AboutMe.html');
                 vm.$store.commit('updateCurrentFileIcon', 'far fa-file-code');
                 vm.$store.commit('updateCurrentFileColor', 'darkorange');*/
-
-                vm.$store.commit('addTabToHistory', {
-                    name: 'AboutMe',
-                    fileName: 'AboutMe.html',
-                    icon: 'far fa-file-code',
-                    iconColor: 'darkorange',
-                    to: '/AboutMe'
-                });
-
-
+                vm.$store.commit('addTabToHistory', AboutMeObj);
             })
         }
     }

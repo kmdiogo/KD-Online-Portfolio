@@ -8,10 +8,10 @@
         <Folder folder-name="Root" :is-initially-open="true">
             <Folder folder-name="Projects"></Folder>
             <Folder folder-name="Experience"></Folder>
-            <File file-name="Welcome.html" to="/" icon="fas fa-file-code" icon-color="darkorange"></File>
-            <File file-name="AboutMe.html" to="/AboutMe" icon="fas fa-file-code" icon-color="darkorange"></File>
-            <File file-name="Skills.html" to="/Skills" icon="fas fa-file-code" icon-color="darkorange"></File>
-            <File file-name="Commands.txt" to="/Commands" icon="far fa-file-alt"></File>
+            <File :file-name="WelcomeObj.fileName" :to="WelcomeObj.to" :icon="WelcomeObj.icon" :icon-color="WelcomeObj.iconColor"></File>
+            <File :file-name="AboutMeObj.fileName" :to="AboutMeObj.to" :icon="AboutMeObj.icon" :icon-color="AboutMeObj.iconColor"></File>
+            <File :file-name="SkillsObj.fileName" :to="SkillsObj.to" :icon="SkillsObj.icon" :icon-color="SkillsObj.iconColor"></File>
+            <File :file-name="CommandsObj.fileName" :to="CommandsObj.to" :icon="CommandsObj.icon" :icon-color="CommandsObj.iconColor"></File>
         </Folder>
 
 
@@ -25,6 +25,14 @@
 
     export default {
         name: "TheNavigator",
+        data() {
+            return {
+                WelcomeObj: WelcomeObj,
+                AboutMeObj: AboutMeObj,
+                SkillsObj: SkillsObj,
+                CommandsObj: CommandsObj
+            }
+        },
         components: {File, Folder},
     }
 </script>
