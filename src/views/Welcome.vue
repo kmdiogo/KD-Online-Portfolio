@@ -27,9 +27,17 @@
         name: "Welcome",
         beforeRouteEnter(to, from, next) {
             next(vm => {
-                vm.$store.commit('updateCurrentFileName', 'Welcome.html');
+                /*vm.$store.commit('updateCurrentFileName', 'Welcome.html');
                 vm.$store.commit('updateCurrentFileIcon', 'far fa-file-code');
-                vm.$store.commit('updateCurrentFileColor', 'darkorange')
+                vm.$store.commit('updateCurrentFileColor', 'darkorange')*/
+
+                vm.$store.commit('addTabToHistory', {
+                    name: 'Welcome',
+                    fileName: 'Welcome.html',
+                    icon: 'far fa-file-code',
+                    iconColor: 'darkorange',
+                    to: '/'
+                });
             })
         }
     }

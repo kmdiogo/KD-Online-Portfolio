@@ -1,6 +1,6 @@
 <template>
     <!-- TODO: Fix sizing issues with images -->
-    <div class="about-me">
+    <div class="about-me text-page">
         <img class="media-bg about-me-bg" src="../assets/media/AboutMeBg.jpg" />
         <div class="row" style="height: 100%;">
             <div class="col-md-6">
@@ -9,7 +9,7 @@
                 <p>Hi, my name is Kenny Diogo!</p>
                 <p>I am currently studying Computer Science at Youngstown State University.</p>
                 <p>I am an avid Coder with a passion for problem solving and creating awesome things.
-                    I have a particular interest in Web Development and Machine Learning (I ideally love work that is an intersection of the two fields), but I really enjoy any kind of work
+                    I have a particular interest in Web Development and Machine Learning (I ideally love work that intersects with the two fields), but I really enjoy any kind of work
                     that demands critical thinking, problem solving, and creative solutions.
                 </p>
 
@@ -25,6 +25,13 @@
                         <span v-if="!isVideoVisible">(check <a class="clickable" @click="isVideoVisible=true">this</a> out)</span>
                         <span v-else>(<a class="clickable" @click="isVideoVisible=false">Close Video</a>)</span>
                     </li>
+                </ul>
+                <p>Favorite Music Artists:</p>
+                <ul>
+                    <li>A Tribe Called Quest</li>
+                    <li>The Beatles</li>
+                    <li>Logic</li>
+                    <li>Joyner Lucas</li>
                 </ul>
             </div>
             <div class="col-md-6 media-column">
@@ -60,9 +67,19 @@
         },
         beforeRouteEnter(to, from, next) {
             next(vm=>{
-                vm.$store.commit('updateCurrentFileName', 'AboutMe.html');
+                /*vm.$store.commit('updateCurrentFileName', 'AboutMe.html');
                 vm.$store.commit('updateCurrentFileIcon', 'far fa-file-code');
-                vm.$store.commit('updateCurrentFileColor', 'darkorange');
+                vm.$store.commit('updateCurrentFileColor', 'darkorange');*/
+
+                vm.$store.commit('addTabToHistory', {
+                    name: 'AboutMe',
+                    fileName: 'AboutMe.html',
+                    icon: 'far fa-file-code',
+                    iconColor: 'darkorange',
+                    to: '/AboutMe'
+                });
+
+
             })
         }
     }
@@ -70,11 +87,6 @@
 
 <style scoped lang="scss">
     @import '../assets/styles/variables.scss';
-    .about-me {
-        color: $text-color-primary;
-        padding: 25px;
-        position: relative;
-    }
     .about-me-bg {
         opacity: 0.15
     }

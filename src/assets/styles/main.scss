@@ -1,5 +1,6 @@
 @import '~bootstrap/dist/css/bootstrap-grid.min.css';
 @import 'transitions-and-animations.scss';
+@import 'variables.scss';
 
 body,html {
   height: 100%;
@@ -43,4 +44,10 @@ body,html {
 }
 .clickable:hover {
   cursor: pointer;
+}
+
+.text-page {
+  color: $text-color-primary;
+  padding: 25px;
+  position: relative;
 }
