@@ -3,7 +3,7 @@
         <div class="content">
             <slot></slot>
         </div>
-        <span class="resize-bar" @mousedown="onMouseDown" draggable="false"></span>
+        <span v-if="direction === 'right'" class="resize-bar" @mousedown="onMouseDown" draggable="false"></span>
     </div>
 </template>
 
@@ -12,7 +12,7 @@
     export default {
         name: "ResizableContainer",
         props: {
-            initialWidth: {
+            initialSize: {
                 type: String,
                 required: true
             },
@@ -35,7 +35,7 @@
         data() {
             return {
                 containerStyle: {
-                    width: this.initialWidth,
+                    width: this.initialSize,
                 },
                 isResizing: false
             }
@@ -59,9 +59,9 @@
     }
     .resize-bar {
         background-color: darkgray;
-        height: 100%;
-        width: 5px !important;
-        cursor: e-resize;
         z-index: 1;
+        height: 100%;
+        width: 5px;
+        cursor: e-resize;
     }
 </style>

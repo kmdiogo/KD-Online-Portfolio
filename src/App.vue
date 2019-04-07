@@ -3,7 +3,7 @@
         <TheToolbar class="the-toolbar-wrapper flex-shrink-0"></TheToolbar>
 
         <div class="content-wrapper">
-            <ResizableContainer initial-width="250px" class="the-navigator-wrapper">
+            <ResizableContainer initial-size="250px" class="the-navigator-wrapper">
                 <TheNavigator></TheNavigator>
             </ResizableContainer>
 
@@ -15,6 +15,9 @@
             </div>
 
         </div>
+
+        <TheTerminal class="flex-shrink-0"></TheTerminal>
+
 
         <TheFootbar class="the-footbar-wrapper flex-shrink-0"></TheFootbar>
     </div>
@@ -28,9 +31,10 @@
     import {EventBus} from "@/event-bus";
     import {throttle} from 'lodash'
     import PageTabs from "./components/PageTabs";
+    import TheTerminal from "./components/TheTerminal";
 
     export default {
-        components: {PageTabs, ResizableContainer, TheNavigator, TheFootbar, TheToolbar},
+        components: {TheTerminal, PageTabs, ResizableContainer, TheNavigator, TheFootbar, TheToolbar},
         methods: {
             onMouseUp() {
                 EventBus.$emit('globalMouseUp');

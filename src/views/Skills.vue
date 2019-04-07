@@ -20,9 +20,9 @@
                 </div>
                 <div v-else>
                     <h1 style="color: darkslateblue">Languages</h1>
-                    <ul>
-                        <li v-for="skill in languages" :key="skill">{{skill}}</li>
-                    </ul>
+                    <p v-for="skill in languages" :key="skill">
+                        <i class="fas fa-chevron-right"></i> {{skill}}
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -42,7 +42,7 @@
                 <div v-else>
                     <h1 style="color: darkslateblue;">Frameworks</h1>
                     <p v-for="skill in frameworks" :key="skill">
-                        <i :class="icons[skill]"></i> {{skill}}
+                        <i class="fas fa-chevron-right"></i> {{skill}}
                     </p>
                 </div>
             </div>
@@ -56,9 +56,9 @@
                 </div>
                 <div v-else>
                     <h1 style="color: darkslateblue">Other</h1>
-                    <ul>
-                        <li v-for="skill in other" :key="skill">{{skill}}</li>
-                    </ul>
+                    <p v-for="skill in other" :key="skill">
+                        <i class="fas fa-chevron-right"></i> {{skill}}
+                    </p>
                 </div>
             </div>
         </div>
