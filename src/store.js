@@ -8,7 +8,8 @@ export default new Vuex.Store({
     currentFileName: '',
     currentFileIcon: '',
     currentFileColor: '',
-    pageTabHistory: {}
+    pageTabHistory: {},
+    isTerminalOpen: false
   },
   mutations: {
     updateCurrentFileName(state, value) {
@@ -35,6 +36,9 @@ export default new Vuex.Store({
       if (state.pageTabHistory[tabName]) {
         Vue.delete(state.pageTabHistory, tabName);
       }
+    },
+    toggleIsTerminalOpen(state) {
+      state.isTerminalOpen = !state.isTerminalOpen;
     }
   },
   actions: {

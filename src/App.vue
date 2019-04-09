@@ -16,8 +16,7 @@
 
         </div>
 
-        <TheTerminal class="flex-shrink-0"></TheTerminal>
-
+        <TheTerminal class="flex-shrink-0 the-terminal-wrapper" v-if="$store.state.isTerminalOpen"></TheTerminal>
 
         <TheFootbar class="the-footbar-wrapper flex-shrink-0"></TheFootbar>
     </div>
@@ -82,6 +81,11 @@
         flex-grow: 1;
         background-color: $interior-bg;
         overflow: auto
+    }
+
+    .the-terminal-wrapper {
+        height: 20%;
+        background-color: $exterior-bg;
     }
 
     .the-footbar-wrapper {
