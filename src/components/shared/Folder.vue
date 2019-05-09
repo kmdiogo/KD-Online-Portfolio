@@ -2,14 +2,16 @@
     <div class="folder">
         <div class="folder-line">
             <div class="chevrons" style="margin-right: 5px; width: 1rem" @click="isExpanded = !isExpanded">
-                <i class="fas fa-chevron-down" style="width: 1rem;" v-if="isExpanded && $slots.default"></i>
-                <i class="fas fa-chevron-right" style="width: 1rem;" v-else-if="$slots.default"></i>
+                <i class="fas fa-chevron-down" style="width: 1rem;" v-if="isExpanded && !isEmpty"></i>
+                <i class="fas fa-chevron-right" style="width: 1rem;" v-else-if="!isEmpty"></i>
             </div>
             <i class="fas fa-folder" style="color: slategray"></i>
             <span class="folder-text" style="margin-left: 5px;">{{folderName}}</span>
         </div>
 
         <div class="sub-folder" v-if="isExpanded">
+            <Folder v-for="dir in directories" :directories="dir.directories" :folder-name="dir.label"></Folder>
+            <File v-for="file in files" :file-name="file.fileName" :to="file.to" :icon="file.icon" :icon-color="file.iconColor"></File>
             <slot></slot>
         </div>
     </div>
@@ -17,8 +19,10 @@
 </template>
 
 <script>
+    import File from "./File";
     export default {
         name: "Folder",
+        components: {File},
         props: {
             folderName: {
                 type: String,
@@ -27,6 +31,14 @@
             isInitiallyOpen: {
                 type: Boolean,
                 default: false
+            },
+            files: {
+                type: Array,
+                default: () => {return []}
+            },
+            directories: {
+                type: Array,
+                default: () => {return []}
             }
         },
         data() {
@@ -34,6 +46,11 @@
                 isExpanded: this.isInitiallyOpen
             }
         },
+        computed: {
+            isEmpty() {
+                return (this.files.length === 0 && this.directories.length === 0);
+            }
+        }
     }
 </script>
 

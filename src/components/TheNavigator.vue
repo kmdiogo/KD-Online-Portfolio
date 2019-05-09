@@ -5,14 +5,21 @@
             <hr />
         </div>
 
-        <Folder folder-name="Root" :is-initially-open="true">
+        <!--<Folder folder-name="Root" :is-initially-open="true">
             <Folder folder-name="Projects"></Folder>
             <Folder folder-name="Experience"></Folder>
-            <File :file-name="WelcomeObj.fileName" :to="WelcomeObj.to" :icon="WelcomeObj.icon" :icon-color="WelcomeObj.iconColor"></File>
+
             <File :file-name="AboutMeObj.fileName" :to="AboutMeObj.to" :icon="AboutMeObj.icon" :icon-color="AboutMeObj.iconColor"></File>
             <File :file-name="SkillsObj.fileName" :to="SkillsObj.to" :icon="SkillsObj.icon" :icon-color="SkillsObj.iconColor"></File>
             <File :file-name="CommandsObj.fileName" :to="CommandsObj.to" :icon="CommandsObj.icon" :icon-color="CommandsObj.iconColor"></File>
-        </Folder>
+            <Folder folder-name="Projects" :is-initially-open="false">
+
+            </Folder>
+        </Folder>-->
+
+        <Folder :folder-name="tree.label" :directories="tree.directories" :files="tree.files" :is-initially-open="true"></Folder>
+
+
 
 
     </div>
@@ -21,6 +28,7 @@
 <script>
     import Folder from "./shared/Folder";
     import File from "./shared/File";
+    import {tree} from "../constants/FileTree";
     import {WelcomeObj, AboutMeObj, SkillsObj, CommandsObj} from "@/constants/PageObjects";
 
     export default {
@@ -30,7 +38,8 @@
                 WelcomeObj: WelcomeObj,
                 AboutMeObj: AboutMeObj,
                 SkillsObj: SkillsObj,
-                CommandsObj: CommandsObj
+                CommandsObj: CommandsObj,
+                tree: tree
             }
         },
         components: {File, Folder},

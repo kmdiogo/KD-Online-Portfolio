@@ -76,7 +76,7 @@
         },
         data() {
             return {
-                languages: ['Javascript', 'Python', 'C#', 'Java', 'HTML/CSS', 'C++', 'VBA/VB.NET', 'SQL'],
+                languages: ['Javascript', 'Python', 'C#', 'Java', 'HTML/CSS', 'C/C++', 'VBA/VB.NET', 'SQL'],
                 frameworks: ['Jquery', 'Vue.js',
                     'ASP.NET MVC', 'Django',
                     'Bootstrap 4'],
@@ -87,7 +87,7 @@
                     'C#': 'fas fa-chevron-right',
                     'Java': "fab fa-java",
                     'HTML/CSS': "fab fa-html5",
-                    'C++': 'fas fa-chevron-right',
+                    'C/C++': 'fas fa-chevron-right',
                     'VBA/VB.NET': 'fas fa-chevron-right',
                     'SQL': "fas fa-database",
                     'Vue.js': "fab fa-vuejs",

@@ -35,6 +35,7 @@
     export default {
         components: {TheTerminal, PageTabs, ResizableContainer, TheNavigator, TheFootbar, TheToolbar},
         methods: {
+            // Global mouse events for resizable container
             onMouseUp() {
                 EventBus.$emit('globalMouseUp');
             },
