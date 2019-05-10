@@ -1,6 +1,6 @@
 <template>
     <div class="the-terminal">
-        <div class="the-terminal-inner" id="inner-terminal">
+        <div class="the-terminal-inner" id="inner-terminal" v-on:keydown.tab="processAutocomplete">
             <span v-for="entry in history" v-html="entry"></span>
             <br v-if="history.length > 0"/>
             <div class="d-flex">
@@ -29,7 +29,7 @@
             convertTreeToArray(tree, null, this.treeArray);
         },
         computed: {
-            curDir() {
+            /*curDir() {
                 let obj = {
                     directories: [],
                     files: []
@@ -40,34 +40,49 @@
                 }
 
                 for (let i=0; i < this.treeArray[this.curDirIndex].files.length; i++) {
-                    obj.files.push(this.treeArray[this.curDirIndex].files[i].label);
+                    //obj.files.push(this.treeArray[this.curDirIndex].files[i].label);
+                    obj.files.push(i);
                 }
                 return obj;
+            },*/
+            curDir() {
+                return this.treeArray[this.curDirIndex];
             }
         },
         methods: {
             processCommand() {
                 this.parsed = this.line.split(' ');
-                if (this.parsed[0] === 'clear')
-                    this.history = [];
-                else if (this.parsed[0] === 'cd') {
-                    this.processChangeDirectory();
+                if (this.parsed.length > 1) {
+                    if (this.parsed[0] === 'cd') {
+                        this.processChangeDirectory();
+                    }
+                    else if (this.parsed[0] === 'open') {
+                        let fileExists = false;
+                        for(let i=0; i < this.curDir.files.length; i++) {
+                            if (this.parsed[1] === this.curDir.files[i].fileName) {
+                                this.$router.push(this.curDir.files[i].to);
+                                fileExists = true;
+                            }
+                        }
+                        if (!fileExists) {
+                            this.history.push(`Cannot find file: '${this.parsed[1]}'`);
+                        }
+                    }
+                    else {
+                        this.history.push(`Unknown command '${this.parsed[0]}'`);
+                    }
                 }
+                else if (this.parsed[0] === 'clear')
+                    this.history = [];
                 else if (this.parsed[0] === 'ls') {
                     for (let i=0; i < this.curDir.directories.length; i++) {
-                        this.history.push(`<span style="color: lightblue">${this.curDir.directories[i]}/</span>`);
+                        this.history.push(`<span style="color: lightblue">${this.treeArray[this.curDir.directories[i]].label}/</span>`);
                     }
                     for (let i=0; i < this.curDir.files.length; i++) {
-                        this.history.push(`<span style="color: blue">${this.curDir.files[i]}</span>`);
+                        this.history.push(`<span style="color: blue">${this.curDir.files[i].fileName}</span>`);
                     }
                 }
-                else {
-                    this.history.push(`Unknown command '${this.parsed[0]}'`);
-                }
                 this.line = '';
-                let objDiv = document.getElementById("inner-terminal");
-                objDiv.scrollTop = objDiv.scrollHeight;
-
             },
             processChangeDirectory() {
                 if (this.parsed[1] === '..' || this.parsed[1] === '../') {
@@ -76,15 +91,48 @@
                 }
                 let dirArray = this.treeArray[this.curDirIndex].directories;
                 for (let i=0; i < dirArray.length; i++) {
-                    if (this.treeArray[dirArray[i]].label === this.parsed[1]) {
+                    if (this.treeArray[dirArray[i]].label === this.parsed[1] || this.treeArray[dirArray[i]].label+'/' === this.parsed[1]) {
                         this.curDirIndex = dirArray[i];
-                        return
+                        return;
                     }
                 }
                 this.history.push(`Directory '${this.parsed[1]}' not found`);
             },
-            processAutocomplete() {
+            processAutocomplete(e) {
+                e.preventDefault();
+                this.parsed = this.line.split(' ');
+                let last = this.parsed.length-1;
 
+                // Search through current directory entries
+                for (let i=0; i < this.curDir.directories.length; i++) {
+                    let nextDir = this.treeArray[this.curDir.directories[i]];
+                    let isMatch = true;
+                    for (let j=0; j < this.parsed[last].length;j++) {
+                        if (nextDir.label[j] && nextDir.label[j].toUpperCase() !== this.parsed[last][j].toUpperCase()) {
+                            isMatch = false;
+                        }
+                    }
+                    if (isMatch) {
+                        this.parsed[last] = nextDir.label + '/';
+                        this.line = this.parsed.join(' ');
+                        return;
+                    }
+                }
+
+                // Search through files
+                for (let i=0; i < this.curDir.files.length; i++) {
+                    let isMatch = true;
+                    for (let j=0; j < this.parsed[last].length;j++) {
+                        if (this.curDir.files[i].fileName[j] && this.curDir.files[i].fileName[j].toUpperCase() !== this.parsed[last][j].toUpperCase()) {
+                            isMatch = false;
+                        }
+                    }
+                    if (isMatch) {
+                        this.parsed[last] = this.curDir.files[i].fileName;
+                        this.line = this.parsed.join(' ');
+                        return;
+                    }
+                }
             },
         }
     }
