@@ -1,3 +1,5 @@
+import {WelcomeObj, AboutMeObj, SkillsObj, CommandsObj} from "./PageObjects";
+
 export const tree = {
     label: 'Root',
     directories: [
@@ -11,38 +13,14 @@ export const tree = {
             directories: [],
             files: []
         },
+        {
+            label: 'About_Me',
+            directories: [],
+            files: [AboutMeObj, SkillsObj]
+        }
 
     ],
-    files: [
-        {
-            label: 'Welcome.html',
-            fileName: 'Welcome.html',
-            icon: 'fas fa-file-code',
-            iconColor: 'darkorange',
-            to: '/',
-        },
-        {
-            label: 'AboutMe.html',
-            fileName: 'AboutMe.html',
-            icon: 'fas fa-file-code',
-            iconColor: 'darkorange',
-            to: '/AboutMe'
-        },
-        {
-            label: 'Skills.html',
-            fileName: 'Skills.html',
-            icon: 'fas fa-file-code',
-            iconColor: 'darkorange',
-            to: '/Skills'
-        },
-        {
-            label: 'Commands.txt',
-            fileName: 'Commands.txt',
-            icon: 'fas fa-file-alt',
-            iconColor: 'gray',
-            to: '/Commands'
-        }
-    ]
+    files: [WelcomeObj, CommandsObj]
 }
 
 export function convertTreeToArray(node, parent=null, treeArray=[]) {

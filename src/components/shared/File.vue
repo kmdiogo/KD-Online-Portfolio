@@ -5,7 +5,7 @@
         </div>
         <router-link class="router-link" tag="span" :to="to">{{fileName}} </router-link>
         <div v-if="isTab" style="margin-left: 5px;">
-            <i class="far fa-window-close close-icon" @click="$store.commit('removeTabFromHistory', name)"></i>
+            <i class="far fa-window-close close-icon" @click="$store.commit('removeTabFromHistory', label)"></i>
         </div>
 
     </div>
@@ -33,7 +33,7 @@
                 type: Boolean,
                 default: false
             },
-            name: {
+            label: {
                 type: String,
             }
         },

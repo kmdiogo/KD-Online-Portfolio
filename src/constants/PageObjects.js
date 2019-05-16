@@ -1,30 +1,30 @@
-export let WelcomeObj =  {
-    name: 'Welcome',
+export const WelcomeObj =  {
+    label: 'Welcome.html',
     fileName: 'Welcome.html',
     icon: 'fas fa-file-code',
     iconColor: 'darkorange',
     to: '/'
 };
 
-export let AboutMeObj = {
-    name: 'AboutMe',
+export const AboutMeObj = {
+    label: 'AboutMe.html',
     fileName: 'AboutMe.html',
     icon: 'fas fa-file-code',
     iconColor: 'darkorange',
     to: '/AboutMe'
 };
 
-export let SkillsObj = {
-    name: 'Skills',
+export const SkillsObj = {
+    label: 'Skills.html',
     fileName: 'Skills.html',
     icon: 'fas fa-file-code',
     iconColor: 'darkorange',
     to: '/Skills'
-}
+};
 
-export let CommandsObj = {
-    name: 'Commands',
+export const CommandsObj = {
+    label: 'Commands.txt',
     fileName: 'Commands.txt',
     icon: 'fas fa-file-alt',
     to: '/Commands'
-}
+};

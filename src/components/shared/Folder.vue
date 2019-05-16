@@ -2,15 +2,15 @@
     <div class="folder">
         <div class="folder-line">
             <div class="chevrons" style="margin-right: 5px; width: 1rem" @click="isExpanded = !isExpanded">
-                <i class="fas fa-chevron-down" style="width: 1rem;" v-if="isExpanded && !isEmpty"></i>
-                <i class="fas fa-chevron-right" style="width: 1rem;" v-else-if="!isEmpty"></i>
+                <i class="fas fa-chevron-down" style="width: 1rem" v-if="isExpanded && !isEmpty"></i>
+                <i class="fas fa-chevron-right" style="width: 1rem" v-else-if="!isEmpty"></i>
             </div>
             <i class="fas fa-folder" style="color: slategray"></i>
             <span class="folder-text" style="margin-left: 5px;">{{folderName}}</span>
         </div>
 
         <div class="sub-folder" v-if="isExpanded">
-            <Folder v-for="dir in directories" :directories="dir.directories" :folder-name="dir.label"></Folder>
+            <Folder v-for="dir in directories" :directories="dir.directories" :folder-name="dir.label" :files="dir.files"></Folder>
             <File v-for="file in files" :file-name="file.fileName" :to="file.to" :icon="file.icon" :icon-color="file.iconColor"></File>
             <slot></slot>
         </div>
@@ -68,6 +68,9 @@
     }
     .folder-text {
         color: rgb(220,220,220);
+    }
+    .chevrons {
+        color: black;
     }
     .chevrons:hover {
         color: white;

@@ -13,7 +13,6 @@
                     <router-view class="flex-grow-1" style="overflow: auto; height: 0px;" />
                 </transition>
             </div>
-
         </div>
 
         <TheTerminal class="flex-shrink-0 the-terminal-wrapper" v-if="$store.state.isTerminalOpen"></TheTerminal>
@@ -68,10 +67,6 @@
     }
 
     .the-navigator-wrapper {
-        //width: 250px;
-        //resize: horizontal;
-        //overflow: auto;
-        //background-color: #252627;
         background-color: $exterior-bg;
         flex-shrink: 0;
     }

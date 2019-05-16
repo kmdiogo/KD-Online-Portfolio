@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Welcome from './views/Welcome'
 import AboutMe from "./views/AboutMe";
-import Skills from "@/views/Skills";
+import Skills from "./views/Skills";
+import Commands from './views/Commands'
 
 Vue.use(Router);
 
@@ -12,7 +13,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      label: 'home',
       component: Welcome
     },
     {
@@ -22,6 +23,10 @@ export default new Router({
     {
       path: '/Skills',
       component: Skills
+    },
+    {
+      path: '/Commands',
+      component: Commands
     }
   ]
 })

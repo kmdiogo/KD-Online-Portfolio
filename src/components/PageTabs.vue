@@ -1,10 +1,10 @@
 <template>
     <div class="page-tabs">
-        <!--<File class="page-tab-file-wrapper" :file-name="$store.state.currentFileName" :icon="$store.state.currentFileIcon" :icon-color="$store.state.currentFileColor"></File>-->
+        <!--<File class="page-tab-file-wrapper" :file-label="$store.state.currentFileName" :icon="$store.state.currentFileIcon" :icon-color="$store.state.currentFileColor"></File>-->
         <File v-for="(tab, key) in $store.state.pageTabHistory"
               :file-name="tab.fileName" :icon="tab.icon"
               :icon-color="tab.iconColor" :to="tab.to"
-              :name="key" is-tab :key="key"></File>
+              :label="key" is-tab :key="key"></File>
     </div>
 </template>
 

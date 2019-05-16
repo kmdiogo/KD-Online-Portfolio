@@ -1,11 +1,11 @@
 <template>
     <div class="the-terminal">
-        <div class="the-terminal-inner" id="inner-terminal" v-on:keydown.tab="processAutocomplete">
+        <div class="the-terminal-inner" id="inner-terminal" v-on:keydown.tab="processAutoComplete">
             <span v-for="entry in history" v-html="entry"></span>
             <br v-if="history.length > 0"/>
             <div class="d-flex">
                 <span style="margin-right: 5px;">{{curDirName}}> </span>
-                <input class="terminal-input flex-grow-1" v-model="line" @keyup.enter="processCommand" @keyup.tab="processAutocomplete" />
+                <input class="terminal-input flex-grow-1" v-model="line" @keyup.enter="processCommand" @keyup.tab="processAutoComplete" ref="cmdLine" />
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
         computed: {
             curDir() {
                 return this.treeArray[this.curDirIndex];
-            }
+            },
         },
         methods: {
             processCommand() {
@@ -42,13 +42,7 @@
                         this.processChangeDirectory();
                     }
                     else if (this.parsed[0] === 'open') {
-                        let fileIndex = this.curDir.files.findIndex(obj => obj.fileName === this.parsed[1]);
-                        if (fileIndex !== -1) {
-                            this.$router.push(this.curDir.files[fileIndex].to);
-                        }
-                        else {
-                            this.history.push(`Cannot find file: '${this.parsed[1]}'`);
-                        }
+                        this.processOpenFile();
                     }
                     else {
                         this.history.push(`Unknown command '${this.parsed[0]}'`);
@@ -57,12 +51,7 @@
                 else if (this.parsed[0] === 'clear')
                     this.history = [];
                 else if (this.parsed[0] === 'ls') {
-                    for (let i=0; i < this.curDir.directories.length; i++) {
-                        this.history.push(`<span style="color: lightblue">${this.treeArray[this.curDir.directories[i]].label}/</span>`);
-                    }
-                    for (let i=0; i < this.curDir.files.length; i++) {
-                        this.history.push(`<span style="color: blue">${this.curDir.files[i].fileName}</span>`);
-                    }
+                    this.processLS();
                 }
                 else {
                     this.history.push(`Unknown command '${this.parsed[0]}'`);
@@ -89,7 +78,24 @@
                 }
                 this.history.push(`Directory '${this.parsed[1]}' not found`);
             },
-            processAutocomplete(e) {
+            processOpenFile() {
+                let fileIndex = this.curDir.files.findIndex(obj => obj.fileName === this.parsed[1]);
+                if (fileIndex !== -1) {
+                    this.$router.push(this.curDir.files[fileIndex].to);
+                }
+                else {
+                    this.history.push(`Cannot find file: '${this.parsed[1]}'`);
+                }
+            },
+            processLS() {
+                for (let i=0; i < this.curDir.directories.length; i++) {
+                    this.history.push(`<span style="color: lightblue">${this.treeArray[this.curDir.directories[i]].label}/</span>`);
+                }
+                for (let i=0; i < this.curDir.files.length; i++) {
+                    this.history.push(`<span style="color: blue">${this.curDir.files[i].fileName}</span>`);
+                }
+            },
+            processAutoComplete(e) {
                 e.preventDefault();
                 this.parsed = this.line.split(' ');
                 let last = this.parsed.length-1;

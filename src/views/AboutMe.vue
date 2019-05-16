@@ -68,10 +68,7 @@
             }
         },
         beforeRouteEnter(to, from, next) {
-            next(vm=>{
-                /*vm.$store.commit('updateCurrentFileName', 'AboutMe.html');
-                vm.$store.commit('updateCurrentFileIcon', 'far fa-file-code');
-                vm.$store.commit('updateCurrentFileColor', 'darkorange');*/
+            next(vm => {
                 vm.$store.commit('addTabToHistory', AboutMeObj);
             })
         }

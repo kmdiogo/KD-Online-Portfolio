@@ -5,14 +5,14 @@
             <hr />
         </div>
 
-        <!--<Folder folder-name="Root" :is-initially-open="true">
-            <Folder folder-name="Projects"></Folder>
-            <Folder folder-name="Experience"></Folder>
+        <!--<Folder folder-label="Root" :is-initially-open="true">
+            <Folder folder-label="Projects"></Folder>
+            <Folder folder-label="Experience"></Folder>
 
-            <File :file-name="AboutMeObj.fileName" :to="AboutMeObj.to" :icon="AboutMeObj.icon" :icon-color="AboutMeObj.iconColor"></File>
-            <File :file-name="SkillsObj.fileName" :to="SkillsObj.to" :icon="SkillsObj.icon" :icon-color="SkillsObj.iconColor"></File>
-            <File :file-name="CommandsObj.fileName" :to="CommandsObj.to" :icon="CommandsObj.icon" :icon-color="CommandsObj.iconColor"></File>
-            <Folder folder-name="Projects" :is-initially-open="false">
+            <File :file-label="AboutMeObj.fileName" :to="AboutMeObj.to" :icon="AboutMeObj.icon" :icon-color="AboutMeObj.iconColor"></File>
+            <File :file-label="SkillsObj.fileName" :to="SkillsObj.to" :icon="SkillsObj.icon" :icon-color="SkillsObj.iconColor"></File>
+            <File :file-label="CommandsObj.fileName" :to="CommandsObj.to" :icon="CommandsObj.icon" :icon-color="CommandsObj.iconColor"></File>
+            <Folder folder-label="Projects" :is-initially-open="false">
 
             </Folder>
         </Folder>-->
