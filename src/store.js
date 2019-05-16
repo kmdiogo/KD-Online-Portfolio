@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import router from './router'
 
 Vue.use(Vuex)
 
@@ -32,9 +33,17 @@ export default new Vuex.Store({
       }
     },
     removeTabFromHistory(state, tabName) {
-      console.log(tabName);
       if (state.pageTabHistory[tabName]) {
+        let isDeletingCurrentTab;
+        if (state.pageTabHistory[tabName].to === router.currentRoute.path)
+          isDeletingCurrentTab = true;
         Vue.delete(state.pageTabHistory, tabName);
+
+        if (isDeletingCurrentTab) {
+          let keys = Object.keys(state.pageTabHistory);
+          let newTo = state.pageTabHistory[keys[keys.length-1]].to;
+          router.push(newTo);
+        }
       }
     },
     toggleIsTerminalOpen(state) {

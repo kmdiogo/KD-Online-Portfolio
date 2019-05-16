@@ -4,7 +4,7 @@
             <span v-for="entry in history" v-html="entry"></span>
             <br v-if="history.length > 0"/>
             <div class="d-flex">
-                <span style="margin-right: 5px;">{{treeArray[curDirIndex].label}}> </span>
+                <span style="margin-right: 5px;">{{curDirName}}> </span>
                 <input class="terminal-input flex-grow-1" v-model="line" @keyup.enter="processCommand" @keyup.tab="processAutocomplete" />
             </div>
         </div>
@@ -20,6 +20,7 @@
             return {
                 line: '',
                 curDirIndex: 0,
+                curDirName: 'Root',
                 history: [],
                 parsed: [],
                 treeArray: []
@@ -29,22 +30,6 @@
             convertTreeToArray(tree, null, this.treeArray);
         },
         computed: {
-            /*curDir() {
-                let obj = {
-                    directories: [],
-                    files: []
-                };
-                for (let i=0; i < this.treeArray[this.curDirIndex].directories.length; i++) {
-                    let nextDirIndex = this.treeArray[this.curDirIndex].directories[i];
-                    obj.directories.push(this.treeArray[nextDirIndex].label);
-                }
-
-                for (let i=0; i < this.treeArray[this.curDirIndex].files.length; i++) {
-                    //obj.files.push(this.treeArray[this.curDirIndex].files[i].label);
-                    obj.files.push(i);
-                }
-                return obj;
-            },*/
             curDir() {
                 return this.treeArray[this.curDirIndex];
             }
@@ -57,14 +42,11 @@
                         this.processChangeDirectory();
                     }
                     else if (this.parsed[0] === 'open') {
-                        let fileExists = false;
-                        for(let i=0; i < this.curDir.files.length; i++) {
-                            if (this.parsed[1] === this.curDir.files[i].fileName) {
-                                this.$router.push(this.curDir.files[i].to);
-                                fileExists = true;
-                            }
+                        let fileIndex = this.curDir.files.findIndex(obj => obj.fileName === this.parsed[1]);
+                        if (fileIndex !== -1) {
+                            this.$router.push(this.curDir.files[fileIndex].to);
                         }
-                        if (!fileExists) {
+                        else {
                             this.history.push(`Cannot find file: '${this.parsed[1]}'`);
                         }
                     }
@@ -82,17 +64,26 @@
                         this.history.push(`<span style="color: blue">${this.curDir.files[i].fileName}</span>`);
                     }
                 }
+                else {
+                    this.history.push(`Unknown command '${this.parsed[0]}'`);
+                }
                 this.line = '';
             },
             processChangeDirectory() {
-                if (this.parsed[1] === '..' || this.parsed[1] === '../') {
-                    this.curDirIndex = this.curDirIndex === 0 ? 0 : this.treeArray[this.curDirIndex].parent;
+                let splitPath = this.curDirName.split('/');
+                if (this.curDirIndex > 0 && this.parsed[1] === '..' || this.parsed[1] === '../') {
+                    this.curDirIndex = this.treeArray[this.curDirIndex].parent;
+                    if (splitPath.length > 1) {
+                        splitPath.pop();
+                        this.curDirName = splitPath.join('/');
+                    }
                     return;
                 }
                 let dirArray = this.treeArray[this.curDirIndex].directories;
                 for (let i=0; i < dirArray.length; i++) {
                     if (this.treeArray[dirArray[i]].label === this.parsed[1] || this.treeArray[dirArray[i]].label+'/' === this.parsed[1]) {
                         this.curDirIndex = dirArray[i];
+                        this.curDirName += '/' + this.treeArray[dirArray[i]].label;
                         return;
                     }
                 }
@@ -106,13 +97,7 @@
                 // Search through current directory entries
                 for (let i=0; i < this.curDir.directories.length; i++) {
                     let nextDir = this.treeArray[this.curDir.directories[i]];
-                    let isMatch = true;
-                    for (let j=0; j < this.parsed[last].length;j++) {
-                        if (nextDir.label[j] && nextDir.label[j].toUpperCase() !== this.parsed[last][j].toUpperCase()) {
-                            isMatch = false;
-                        }
-                    }
-                    if (isMatch) {
+                    if (this.isOrderedSubstring(this.parsed[last], nextDir.label)) {
                         this.parsed[last] = nextDir.label + '/';
                         this.line = this.parsed.join(' ');
                         return;
@@ -121,19 +106,23 @@
 
                 // Search through files
                 for (let i=0; i < this.curDir.files.length; i++) {
-                    let isMatch = true;
-                    for (let j=0; j < this.parsed[last].length;j++) {
-                        if (this.curDir.files[i].fileName[j] && this.curDir.files[i].fileName[j].toUpperCase() !== this.parsed[last][j].toUpperCase()) {
-                            isMatch = false;
-                        }
-                    }
-                    if (isMatch) {
+                    if (this.isOrderedSubstring(this.parsed[last], this.curDir.files[i].fileName)) {
                         this.parsed[last] = this.curDir.files[i].fileName;
                         this.line = this.parsed.join(' ');
-                        return;
                     }
                 }
+
             },
+            isOrderedSubstring(s1, s2) {
+                if (s1.length > s2.length)
+                    return false;
+                for (let i=0; i < s1.length; i++) {
+                    if (s1[i].toUpperCase() !== s2[i].toUpperCase()) {
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
     }
 </script>

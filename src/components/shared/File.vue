@@ -5,7 +5,7 @@
         </div>
         <router-link class="router-link" tag="span" :to="to">{{fileName}} </router-link>
         <div v-if="isTab" style="margin-left: 5px;">
-            <i class="far fa-window-close" @click="$store.commit('removeTabFromHistory', name)"></i>
+            <i class="far fa-window-close close-icon" @click="$store.commit('removeTabFromHistory', name)"></i>
         </div>
 
     </div>
@@ -52,5 +52,8 @@
     }
     .tab {
         border: 1px solid gray;
+    }
+    .close-icon:hover {
+        color: gray;
     }
 </style>

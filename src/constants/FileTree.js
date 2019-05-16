@@ -8,19 +8,7 @@ export const tree = {
         },
         {
             label: 'Experience',
-            directories: [        {
-                label: 'Experience2',
-                directories: [],
-                files: []
-            },        {
-                label: 'Experience3',
-                directories: [],
-                files: []
-            },        {
-                label: 'Experience4',
-                directories: [],
-                files: []
-            }],
+            directories: [],
             files: []
         },
 
@@ -74,5 +62,5 @@ export function convertTreeToArray(node, parent=null, treeArray=[]) {
 
     }
 
-
 }
+
