@@ -14,7 +14,7 @@ export const tree = {
             files: []
         },
         {
-            label: 'About_Me',
+            label: 'Kenny',
             directories: [],
             files: [AboutMeObj, SkillsObj]
         }

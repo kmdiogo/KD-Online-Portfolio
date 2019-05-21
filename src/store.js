@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     pageTabHistory: {},
-    isTerminalOpen: false
+    isTerminalOpen: false,
+    isToolFocused: false
   },
   mutations: {
     addTabToHistory(state, value) {

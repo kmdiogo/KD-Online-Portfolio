@@ -9,10 +9,15 @@ body,html {
   color: white;
 }
 
+a {
+  color: white;
+}
+
 .router-link:hover {
   cursor: pointer;
   color: darkgray;
 }
+
 
 .router-link-exact-active {
   background-color: darkslategrey;
@@ -52,6 +57,7 @@ body,html {
   padding: 25px;
   position: relative;
 }
+
 
 
 

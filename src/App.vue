@@ -58,7 +58,8 @@
     .the-toolbar-wrapper {
         background-color: $exterior-bg;
         border: $bar-border;
-        height: 50px;
+        //height: 50px;
+        height: auto;
     }
 
     .content-wrapper {

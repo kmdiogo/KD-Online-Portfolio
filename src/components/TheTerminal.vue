@@ -60,7 +60,8 @@
             },
             processChangeDirectory() {
                 let splitPath = this.curDirName.split('/');
-                if (this.curDirIndex > 0 && this.parsed[1] === '..' || this.parsed[1] === '../') {
+                if (this.curDirIndex <= 0) return;
+                if (this.parsed[1] === '..' || this.parsed[1] === '../') {
                     this.curDirIndex = this.treeArray[this.curDirIndex].parent;
                     if (splitPath.length > 1) {
                         splitPath.pop();
