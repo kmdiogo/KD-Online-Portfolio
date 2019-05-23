@@ -1,40 +1,30 @@
 <template>
     <!-- TODO: Fix sizing issues with images -->
     <div class="about-me text-page">
-        <img class="media-bg about-me-bg" src="../assets/media/AboutMeBg.jpg" />
+        <img class="media-bg" src="../assets/media/AboutMeBg.jpg" />
         <div class="row" style="height: 100%;">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="h-super1" style="color: forestgreen;">About Me</div>
                 <hr />
-                <p>Hi, my name is Kenny Diogo!</p>
-                <p>I am currently studying Computer Science at Youngstown State University.</p>
-                <p>I am an avid Coder with a passion for problem solving and creating awesome things.
-                    I have a particular interest in Web Development and Machine Learning (I ideally love work that intersects with the two fields), but I really enjoy any kind of work
-                    that demands critical thinking, problem solving, and creative solutions.
-                </p>
-
+                <h1>Kenny Diogo</h1>
+                <h2>An avid Coder with a passion for solving problems computationally</h2>
+                <p>I am currently studying Computer Science with a minor in Mathematics at Youngstown State University.</p>
                 <p>
-                    Some hobbies of mine include:
+                    Ever since beginning my studies, I have developed an extreme passion for Computer Science and programming.
+                    I am always eager to learn new skills/technologies and have worked on
+                    topics (either in professional environments or in personal projects) that include:
                 </p>
                 <ul>
-                    <li>Playing video games (Screeps, Gears of War, Overwatch)</li>
-                    <li>Volleyball (I play in my College Intramural Leagues and our Men's Club Team)</li>
-                    <li>Playing piano</li>
-                    <li>
-                        Breakdancing
-                        <span v-if="!isVideoVisible">(check <a class="clickable" @click="isVideoVisible=true">this</a> out)</span>
-                        <span v-else>(<a class="clickable" @click="isVideoVisible=false">Close Video</a>)</span>
-                    </li>
-                </ul>
-                <p>Favorite Music Artists:</p>
-                <ul>
-                    <li>A Tribe Called Quest</li>
-                    <li>The Beatles</li>
-                    <li>Logic</li>
-                    <li>Joyner Lucas</li>
+                    <li>Web Applications/Services</li>
+                    <li>Mathematical Modeling and Computational Proofs</li>
+                    <li>Neural Networks</li>
+                    <li>Compilers (Lexical Analyzer Generator)</li>
+                    <li>Game Development</li>
+                    <li>Databases</li>
+                    <li>File System Drivers (EXT2)</li>
                 </ul>
             </div>
-            <div class="col-md-6 media-column">
+            <!--<div class="col-md-6 media-column">
                 <div class="h-super1" style="text-align: left; width: 100%; color: darkslateblue">Media</div>
                 <hr style="width: 100%;" />
 
@@ -51,7 +41,7 @@
                         <span>:)</span>
                     </div>
                 </transition>
-            </div>
+            </div>-->
         </div>
 
     </div>
@@ -77,9 +67,6 @@
 
 <style scoped lang="scss">
     @import '../assets/styles/variables.scss';
-    .about-me-bg {
-        opacity: 0.15
-    }
     .head-shot {
         min-height: 0;
         width: 300px;

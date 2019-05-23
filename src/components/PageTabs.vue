@@ -19,6 +19,7 @@
 <style scoped lang="scss">
     @import "../assets/styles/variables";
     .page-tabs {
+        overflow: auto;
         height: 35px;
         display: flex;
         align-items: center;

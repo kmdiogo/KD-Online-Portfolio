@@ -1,19 +1,31 @@
 <template>
     <div class="d-flex flex-column">
-        <div class="d-flex toolbar-actions">
-            <div class="dropdown">
-                <span>File</span>
+        <div class="d-flex toolbar-actions align-items-center">
+            <div class="dropdown d-md-none">
+                <span>Files</span>
                 <div class="dropdown-content">
-                    <a class="dropdown-item" href="/test.txt" download>Download Resume</a>
+                    <TheNavigator></TheNavigator>
                 </div>
+            </div>
+            <div class="dropdown">
+                <span>Other</span>
+                <div class="dropdown-content">
+                    <span>Basic HTML (currently unavailable)</span>
+                    <span><a class="custom-link" href="/public/Kenneth_Diogo_Resume.pdf" download>Download Resume</a></span>
+                </div>
+            </div>
+            <div class="name-sig" style="margin-left: auto; font-family: 'Cute Font', cursive;">
+                Kenneth Diogo
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import TheNavigator from "./TheNavigator";
     export default {
         name: "TheToolbar",
+        components: {TheNavigator},
         methods: {
         }
     }
@@ -25,19 +37,30 @@
         padding: 5px;
     }
 
+    .name-sig {
+        font-family: 'Righteous', cursive !important;
+        font-size: 1.2em;
+    }
+
     .dropdown {
         position: relative;
         display: inline-block;
     }
 
     .dropdown-content {
+        white-space: nowrap;
         display: none;
         position: absolute;
         background-color: $exterior-bg;
         min-width: 180px;
         box-shadow: 0px 8px 16px 0px $highlight-blue;
-        padding: 5px;
-        z-index: 1;
+        //padding: 5px;
+        z-index: 10;
+    }
+
+    .dropdown-content > span {
+        border: 1px solid gray;
+        padding: 2px;
     }
 
     .dropdown:hover {

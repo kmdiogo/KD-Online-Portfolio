@@ -1,6 +1,6 @@
 <template>
     <div class="welcome">
-        <video autoplay muted loop class="media-bg coding-bg">
+        <video autoplay muted loop class="media-bg coding-bg" style="pointer-events: none">
             <source src="../assets/media/Coding.mp4" type="video/mp4">
         </video>
 
@@ -29,10 +29,6 @@
         name: "Welcome",
         beforeRouteEnter(to, from, next) {
             next(vm => {
-                /*vm.$store.commit('updateCurrentFileName', 'Welcome.html');
-                vm.$store.commit('updateCurrentFileIcon', 'far fa-file-code');
-                vm.$store.commit('updateCurrentFileColor', 'darkorange')*/
-
                 vm.$store.commit('addTabToHistory', WelcomeObj);
             })
         }

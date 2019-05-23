@@ -1,26 +1,11 @@
 <template>
     <div class="the-navigator">
         <div style="color: rgb(220,220,220)">
-            <span>Kenny's Portfolio</span>
+            <span><i class="fas fa-box-open" style="color: #ad8762"></i> Kenny's Portfolio</span>
             <hr />
         </div>
 
-        <!--<Folder folder-label="Root" :is-initially-open="true">
-            <Folder folder-label="Projects"></Folder>
-            <Folder folder-label="Experience"></Folder>
-
-            <File :file-label="AboutMeObj.fileName" :to="AboutMeObj.to" :icon="AboutMeObj.icon" :icon-color="AboutMeObj.iconColor"></File>
-            <File :file-label="SkillsObj.fileName" :to="SkillsObj.to" :icon="SkillsObj.icon" :icon-color="SkillsObj.iconColor"></File>
-            <File :file-label="CommandsObj.fileName" :to="CommandsObj.to" :icon="CommandsObj.icon" :icon-color="CommandsObj.iconColor"></File>
-            <Folder folder-label="Projects" :is-initially-open="false">
-
-            </Folder>
-        </Folder>-->
-
         <Folder :folder-name="tree.label" :directories="tree.directories" :files="tree.files" :is-initially-open="true"></Folder>
-
-
-
 
     </div>
 </template>
@@ -48,6 +33,7 @@
 
 <style scoped>
     .the-navigator {
+        height: 100%;
         display: flex;
         flex-direction: column;
         padding: 5px;
