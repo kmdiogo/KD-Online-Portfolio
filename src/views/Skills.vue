@@ -69,7 +69,7 @@
             }
         },
         beforeRouteEnter(to, from, next) {
-            next(vm=>{
+            next(vm=> {
                 vm.$store.commit('addTabToHistory', SkillsObj);
             })
         }

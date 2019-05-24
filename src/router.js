@@ -4,6 +4,7 @@ import Welcome from './views/Welcome'
 import AboutMe from "./views/AboutMe";
 import Skills from "./views/Skills";
 import Commands from './views/Commands'
+import Experience from './views/Experience'
 
 Vue.use(Router);
 
@@ -27,6 +28,10 @@ export default new Router({
     {
       path: '/Commands',
       component: Commands
+    },
+    {
+      path: '/Experience',
+      component: Experience
     }
   ]
 })

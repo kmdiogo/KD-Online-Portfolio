@@ -28,3 +28,11 @@ export const CommandsObj = {
     icon: 'fas fa-file-alt',
     to: '/Commands'
 };
+
+export const ExperienceObj = {
+    label: 'Experience.html',
+    fileName: 'Experience.html',
+    icon: 'fas fa-file-code',
+    iconColor: 'darkorange',
+    to: '/Experience'
+}
