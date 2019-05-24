@@ -5,6 +5,7 @@ import AboutMe from "./views/AboutMe";
 import Skills from "./views/Skills";
 import Commands from './views/Commands'
 import Experience from './views/Experience'
+import {WelcomeObj, ExperienceObj, CommandsObj, SkillsObj, AboutMeObj} from "./constants/PageObjects";
 
 Vue.use(Router);
 
@@ -13,24 +14,23 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      label: 'home',
+      path: WelcomeObj.to,
       component: Welcome
     },
     {
-      path: '/AboutMe',
+      path: AboutMeObj.to,
       component: AboutMe
     },
     {
-      path: '/Skills',
+      path: SkillsObj.to,
       component: Skills
     },
     {
-      path: '/Commands',
+      path: CommandsObj.to,
       component: Commands
     },
     {
-      path: '/Experience',
+      path: ExperienceObj.to,
       component: Experience
     }
   ]

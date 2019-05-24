@@ -1,5 +1,6 @@
 <template>
     <div class="text-page skills">
+        <!-- TODO: Update background image with up to date source -->
         <img class="media-bg about-me-bg" src="../assets/media/SkillsBg.jpg" />
         <div class="h-super1" style="color: forestgreen">Skills</div>
         <hr style="width: 100%;" />
