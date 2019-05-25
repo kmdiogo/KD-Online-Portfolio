@@ -21,18 +21,27 @@
 
         <br />
 
-        <h3 class="m-0">Instructions: </h3>
-        <p class="m-0">
-            Use the input box below to define the tokens you want the Analyzer to recognize.
-            The tokens are defined using regular expressions. Character sets are supported.
-            You can also define ignore sequences which the Analyzer will recognize but not return anything. A template is already provided
-            to show how to define standard C++ identifier tokens.
-        </p>
+        <div class="d-flex align-items-center">
+            <h3 class="m-0">Instructions:&nbsp;</h3>
+            <div class="chevrons" @click="isInstructionOpen = !isInstructionOpen">
+                <i class="fas fa-chevron-down" style="width: 1rem" v-if="isInstructionOpen"></i>
+                <i class="fas fa-chevron-right" style="width: 1rem" v-else></i>
+            </div>
+        </div>
+        <div class="instructions" v-if="isInstructionOpen">
+            <p class="m-0">
+                Use the input box below to define the tokens you want the Analyzer to recognize.
+                The tokens are defined using regular expressions. Character sets are supported.
+                You can also define ignore sequences which the Analyzer will recognize but not return anything. A template is already provided
+                to show how to define standard C++ identifier tokens.
+            </p>
 
-        <p>
-            Once your tokens are defined, click the run button. Two download links will appear below the input box.
-            One is a header file and the other is a cpp file for the Lexical Analyzer class.
-        </p>
+            <p>
+                Once your tokens are defined, click the run button. Two download links will appear below the input box.
+                One is a header file and the other is a cpp file for the Lexical Analyzer class.
+            </p>
+        </div>
+
 
         <h3>Input: </h3>
         <div>
@@ -66,7 +75,8 @@
                     'ignore /[ws]+/\n',
                 headerFile: null,
                 bodyFile: null,
-                wasmScriptName: 'LAG.js'
+                wasmScriptName: 'LAG.js',
+                isInstructionOpen: false
             }
         },
         methods: {
@@ -188,6 +198,14 @@
     #emscripten-logo {
         width: 200px;
         height: 60px;
+    }
+
+    .chevrons {
+        color: gray;
+    }
+    .chevrons:hover {
+        color: white;
+        cursor: pointer;
     }
 
 </style>
