@@ -5,7 +5,8 @@ import AboutMe from "./views/AboutMe";
 import Skills from "./views/Skills";
 import Commands from './views/Commands'
 import Experience from './views/Experience'
-import {WelcomeObj, ExperienceObj, CommandsObj, SkillsObj, AboutMeObj} from "./constants/PageObjects";
+import LAG from './views/LAG'
+import {WelcomeObj, ExperienceObj, CommandsObj, SkillsObj, AboutMeObj, LAGObj} from "./constants/PageObjects";
 
 Vue.use(Router);
 
@@ -32,6 +33,10 @@ export default new Router({
     {
       path: ExperienceObj.to,
       component: Experience
+    },
+    {
+      path: LAGObj.to,
+      component: LAG
     }
   ]
 })

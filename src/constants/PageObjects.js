@@ -36,3 +36,11 @@ export const ExperienceObj = {
     iconColor: 'darkorange',
     to: '/Experience'
 }
+
+export const LAGObj = {
+    label: 'LAG.cpp',
+    fileName: 'LAG.cpp',
+    icon: 'fas fa-file-code',
+    iconColor: 'lightblue',
+    to: '/LAG'
+}

@@ -57,6 +57,12 @@
                     this.history.push(`Unknown command '${this.parsed[0]}'`);
                 }
                 this.line = '';
+                setTimeout(function() {
+                    let element = document.getElementById('inner-terminal');
+                    element.scrollTop = element.scrollHeight;
+                }, 0)
+
+
             },
             processChangeDirectory() {
                 let splitPath = this.curDirName.split('/');

@@ -1,4 +1,4 @@
-import {WelcomeObj, AboutMeObj, SkillsObj, CommandsObj, ExperienceObj} from "./PageObjects";
+import {WelcomeObj, AboutMeObj, SkillsObj, CommandsObj, ExperienceObj, LAGObj} from "./PageObjects";
 
 export const tree = {
     label: 'Root',
@@ -6,7 +6,7 @@ export const tree = {
         {
             label: 'Projects',
             directories: [],
-            files: []
+            files: [LAGObj]
         },
         {
             label: 'Kenny',
