@@ -7,12 +7,12 @@
                 <div class="h-super1" style="color: forestgreen;">About Me</div>
                 <hr />
                 <h1>Kenny Diogo</h1>
-                <h2>An avid Coder with a passion for solving problems computationally</h2>
+                <h2>An avid coder with a passion for solving problems computationally</h2>
                 <p>I am currently studying Computer Science with a minor in Mathematics at Youngstown State University.</p>
                 <p>
                     Ever since beginning my studies, I have developed an extreme passion for Computer Science and programming.
                     I am always eager to learn new skills/technologies and have worked on
-                    topics (either in professional environments or in personal projects) that include:
+                    topics (either in professional, academic, or personal environments) that include:
                 </p>
                 <ul>
                     <li>Web Applications/Services</li>

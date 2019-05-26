@@ -44,3 +44,19 @@ export const LAGObj = {
     iconColor: 'lightblue',
     to: '/LAG'
 }
+
+export const GeneticFBObj = {
+    label: 'GeneticFB.cs',
+    fileName: 'GeneticFB.cs',
+    icon: 'fas fa-file-code',
+    iconColor: 'mediumpurple',
+    to: '/GeneticFB'
+}
+
+export const TACObj = {
+    label: 'TAC.html',
+    fileName: 'TAC.html',
+    icon: 'fas fa-file-code',
+    iconColor: 'darkorange',
+    to: '/TAC'
+}

@@ -5,8 +5,19 @@ import AboutMe from "./views/AboutMe";
 import Skills from "./views/Skills";
 import Commands from './views/Commands'
 import Experience from './views/Experience'
-import LAG from './views/LAG'
-import {WelcomeObj, ExperienceObj, CommandsObj, SkillsObj, AboutMeObj, LAGObj} from "./constants/PageObjects";
+import LAG from './views/Projects/LAG'
+import GeneticFB from './views/Projects/GeneticFB'
+import TAC from './views/Projects/TAC'
+
+import {
+  WelcomeObj,
+  ExperienceObj,
+  CommandsObj,
+  SkillsObj,
+  AboutMeObj,
+  LAGObj,
+  GeneticFBObj, TACObj
+} from "./constants/PageObjects";
 
 Vue.use(Router);
 
@@ -37,6 +48,14 @@ export default new Router({
     {
       path: LAGObj.to,
       component: LAG
+    },
+    {
+      path: GeneticFBObj.to,
+      component: GeneticFB
+    },
+    {
+      path: TACObj.to,
+      component: TAC
     }
   ]
 })

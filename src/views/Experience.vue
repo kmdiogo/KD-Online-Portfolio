@@ -2,9 +2,10 @@
     <div class="text-page skills">
         <!-- TODO: Update background image with higher res photo -->
         <img class="media-bg about-me-bg" src="../assets/media/ExperienceBg.jpg" />
-        <div class="h-super1" style="color: forestgreen">Experience</div>
+        <div class="h-super1" style="color: forestgreen">Work Experience</div>
         <hr style="width: 100%;" />
 
+        <!-- TODO: Make custom Timeline component since this one has issues with Edge browser -->
         <Timeline
                 style="width: 100%; max-width: 100%;"
                 :timeline-items="dataTimeline"

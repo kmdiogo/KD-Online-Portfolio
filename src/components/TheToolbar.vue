@@ -2,7 +2,7 @@
     <div class="d-flex flex-column">
         <div class="d-flex toolbar-actions align-items-center">
             <div class="dropdown d-md-none">
-                <span>Files</span>
+                <span><i class="fas fa-list-ul"></i> Files</span>
                 <div class="dropdown-content">
                     <TheNavigator></TheNavigator>
                 </div>
@@ -11,7 +11,7 @@
                 <span>Other</span>
                 <div class="dropdown-content">
                     <span>Basic HTML (currently unavailable)</span>
-                    <span><a class="custom-link" href="/public/Kenneth_Diogo_Resume.pdf" download>Download Resume</a></span>
+                    <span><a class="custom-link" href="static/Kenneth_Diogo_Resume.pdf" download>Download Resume</a></span>
                 </div>
             </div>
             <div class="name-sig" style="margin-left: auto; font-family: 'Cute Font', cursive;">

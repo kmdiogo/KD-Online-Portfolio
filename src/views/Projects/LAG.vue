@@ -1,11 +1,21 @@
 <template>
     <div class="text-page d-flex flex-column">
-        <h1 style="color: forestgreen; margin: 0;">Lexical Analyzer Generator</h1>
-
         <div class="d-flex">
-            <h2>Powered by: </h2>
-            <img src="../assets/media/emscripten_logo.png" id="emscripten-logo" />
+            <h1 style="color: forestgreen; margin: 0;">Lexical Analyzer Generator</h1>
+            <a href="https://github.com/kmdiogo/LAG" style="margin-left: auto;">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
         </div>
+
+
+        <div class="d-flex align-items-center">
+            <h2>Powered by: </h2>
+            <img src="../../assets/media/emscripten_logo.png" id="emscripten-logo" />
+        </div>
+
+        <h3 class="m-0">Technologies: C++</h3>
+
+
         <hr style="width: 100%;" />
 
         <h4>
@@ -21,9 +31,9 @@
 
         <br />
 
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center dropdown-header" @click="isInstructionOpen = !isInstructionOpen">
             <h3 class="m-0">Instructions:&nbsp;</h3>
-            <div class="chevrons" @click="isInstructionOpen = !isInstructionOpen">
+            <div class="chevrons">
                 <i class="fas fa-chevron-down" style="width: 1rem" v-if="isInstructionOpen"></i>
                 <i class="fas fa-chevron-right" style="width: 1rem" v-else></i>
             </div>
@@ -60,7 +70,8 @@
 </template>
 
 <script>
-    import {LAGObj} from "../constants/PageObjects";
+    import {LAGObj} from "../../constants/PageObjects";
+    import {stringToBytes} from "../../utils";
 
     export default {
         name: "LAG",
@@ -68,51 +79,23 @@
             return {
                 inputText: 'class alpha [a-zA-Z_]\n' +
                     'class digit [0-9]\n' +
-                    'class ws [\\n\\t\\f\\v\\r\\ ]\n' +
+                    'class whitespace [\\n\\t\\f\\v\\r\\ ]\n' +
                     '\n' +
                     'token Ident /[alpha]([alpha]|[digit])* /\n' +
                     '\n' +
-                    'ignore /[ws]+/\n',
+                    'ignore /[whitespace]+/\n',
                 headerFile: null,
                 bodyFile: null,
-                wasmScriptName: 'LAG.js',
+                lagScriptName: 'WASM/LAG.js',
                 isInstructionOpen: false
             }
         },
         methods: {
-            // stringToBytes source code from Google's Closure Library
-            stringToBytes(str) {
-                // TODO(user): Use native implementations if/when available
-                var out = [], p = 0;
-                for (var i = 0; i < str.length; i++) {
-                    var c = str.charCodeAt(i);
-                    if (c < 128) {
-                        out[p++] = c;
-                    } else if (c < 2048) {
-                        out[p++] = (c >> 6) | 192;
-                        out[p++] = (c & 63) | 128;
-                    } else if (
-                        ((c & 0xFC00) == 0xD800) && (i + 1) < str.length &&
-                        ((str.charCodeAt(i + 1) & 0xFC00) == 0xDC00)) {
-                        // Surrogate Pair
-                        c = 0x10000 + ((c & 0x03FF) << 10) + (str.charCodeAt(++i) & 0x03FF);
-                        out[p++] = (c >> 18) | 240;
-                        out[p++] = ((c >> 12) & 63) | 128;
-                        out[p++] = ((c >> 6) & 63) | 128;
-                        out[p++] = (c & 63) | 128;
-                    } else {
-                        out[p++] = (c >> 12) | 224;
-                        out[p++] = ((c >> 6) & 63) | 128;
-                        out[p++] = (c & 63) | 128;
-                    }
-                }
-                return out;
-            },
             runLAG() {
                 // Write user input to input.txt virtual file
                 let outputText = document.getElementById('output');
                 outputText.innerHTML = '';
-                let data = this.stringToBytes(this.inputText);
+                let data = stringToBytes(this.inputText);
                 //Module['FS_createDataFile']('/', 'input.txt', data, true, true, true);
                 let stream = FS.open('input.txt', 'w');
                 FS.write(stream, data, 0, data.length, 0);
@@ -149,16 +132,16 @@
             }
         },
         mounted() {
-            // Load script that hooks WASM program output to HTML
+            // Load LAG WASM Script
             let lagScript = document.createElement('script');
-            lagScript.setAttribute('src', 'wasm_output.js');
+            lagScript.setAttribute('src', this.lagScriptName);
             lagScript.id = 'lag-script';
             document.head.appendChild(lagScript);
             console.log("LAG Script Loaded.");
 
-            // Load LAG WASM Script
+            // Load script that hooks WASM program output to HTML
             let wasmOutputScript = document.createElement('script');
-            wasmOutputScript.setAttribute('src', this.wasmScriptName);
+            wasmOutputScript.setAttribute('src', 'WASM/wasm_output.js');
             wasmOutputScript.id = 'wasm-output-script';
             document.head.appendChild(wasmOutputScript);
             console.log("Emscripten Output Script Loaded.");
@@ -197,14 +180,16 @@
 
     #emscripten-logo {
         width: 200px;
-        height: 60px;
+        height: 50px;
     }
 
     .chevrons {
         color: gray;
     }
-    .chevrons:hover {
+    .dropdown-header:hover > .chevrons {
         color: white;
+    }
+    .dropdown-header:hover {
         cursor: pointer;
     }
 
