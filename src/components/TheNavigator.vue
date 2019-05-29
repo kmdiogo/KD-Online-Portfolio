@@ -20,10 +20,6 @@
         name: "TheNavigator",
         data() {
             return {
-                WelcomeObj: WelcomeObj,
-                AboutMeObj: AboutMeObj,
-                SkillsObj: SkillsObj,
-                CommandsObj: CommandsObj,
                 tree: tree
             }
         },

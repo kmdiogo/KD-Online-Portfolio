@@ -2,7 +2,7 @@
     <div class="d-flex flex-column">
         <div class="d-flex toolbar-actions align-items-center">
             <div class="dropdown d-md-none">
-                <span><i class="fas fa-list-ul"></i> Files</span>
+                <span><i class="fas fa-list-ul"></i> Pages</span>
                 <div class="dropdown-content">
                     <TheNavigator></TheNavigator>
                 </div>
@@ -15,6 +15,8 @@
                 </div>
             </div>
             <div class="name-sig" style="margin-left: auto; font-family: 'Cute Font', cursive;">
+                <a href="https://www.linkedin.com/in/kennethdiogo/"><i class="fab fa-linkedin" style="color: #0077b5; margin-right: 5px;"></i></a>
+                <a href="https://github.com/kmdiogo"><i class="fab fa-github-square"></i></a>
                 Kenneth Diogo
             </div>
         </div>

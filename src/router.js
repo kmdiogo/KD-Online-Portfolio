@@ -3,21 +3,23 @@ import Router from 'vue-router'
 import Welcome from './views/Welcome'
 import AboutMe from "./views/AboutMe";
 import Skills from "./views/Skills";
-import Commands from './views/Commands'
+import README from './views/README'
 import Experience from './views/Experience'
 import LAG from './views/Projects/LAG'
 import GeneticFB from './views/Projects/GeneticFB'
 import TAC from './views/Projects/TAC'
+import Trivialize from "./views/Projects/Trivialize";
 
 import {
   WelcomeObj,
   ExperienceObj,
-  CommandsObj,
+  READMEObj,
   SkillsObj,
   AboutMeObj,
   LAGObj,
-  GeneticFBObj, TACObj
+  GeneticFBObj, TACObj, TrivializeObj
 } from "./constants/PageObjects";
+
 
 Vue.use(Router);
 
@@ -38,8 +40,8 @@ export default new Router({
       component: Skills
     },
     {
-      path: CommandsObj.to,
-      component: Commands
+      path: READMEObj.to,
+      component: README
     },
     {
       path: ExperienceObj.to,
@@ -56,6 +58,10 @@ export default new Router({
     {
       path: TACObj.to,
       component: TAC
+    },
+    {
+      path: TrivializeObj.to,
+      component: Trivialize
     }
   ]
 })

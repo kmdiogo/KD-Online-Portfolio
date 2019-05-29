@@ -60,7 +60,7 @@
                 setTimeout(function() {
                     let element = document.getElementById('inner-terminal');
                     element.scrollTop = element.scrollHeight;
-                }, 0)
+                }, 10)
 
 
             },

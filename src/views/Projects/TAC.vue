@@ -2,9 +2,6 @@
     <div class="text-page d-flex flex-column">
         <div class="d-flex">
             <h1 style="color: forestgreen; margin: 0;">Tutor Assistance Center</h1>
-            <a href="#" style="margin-left: auto;">
-                <i class="fab fa-github fa-2x"></i>
-            </a>
         </div>
         <h2>An all in one solution for managing walk-in tutoring environments</h2>
         <h3 class="m-0">Technologies: Django (w/ REST framework), Vue.js, BootstrapVue</h3>
@@ -34,12 +31,20 @@
             </div>
         </div>
 
+
     </div>
 </template>
 
 <script>
+    import {TACObj} from "../../constants/PageObjects";
+
     export default {
-        name: "TAC"
+        name: "TAC",
+        beforeRouteEnter(to, from, next) {
+            next(vm=> {
+                vm.$store.commit('addTabToHistory', TACObj);
+            })
+        },
     }
 </script>
 

@@ -2,6 +2,7 @@
     <div class="text-page">
         <div class="d-flex">
             <h1 style="color: forestgreen; margin: 0;">Genetic Flappy Bird</h1>
+            <!-- TODO: Create Github Repo and upload code -->
             <a href="#" style="margin-left: auto;">
                 <i class="fab fa-github fa-2x"></i>
             </a>
@@ -24,6 +25,8 @@
                     allowfullscreen>
             </iframe>
         </div>
+
+        <!-- TODO: Consider adding WebGL version of project here -->
 
 
     </div>

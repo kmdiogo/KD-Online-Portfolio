@@ -22,11 +22,11 @@ export const SkillsObj = {
     to: '/Skills'
 };
 
-export const CommandsObj = {
-    label: 'Commands.txt',
-    fileName: 'Commands.txt',
+export const READMEObj = {
+    label: 'README.txt',
+    fileName: 'README.txt',
     icon: 'fas fa-file-alt',
-    to: '/Commands'
+    to: '/README'
 };
 
 export const ExperienceObj = {
@@ -59,4 +59,12 @@ export const TACObj = {
     icon: 'fas fa-file-code',
     iconColor: 'darkorange',
     to: '/TAC'
+}
+
+export const TrivializeObj = {
+    label: 'Trivialize.html',
+    fileName: 'Trivialize.html',
+    icon: 'fas fa-file-code',
+    iconColor: 'darkorange',
+    to: '/Trivialize'
 }

@@ -1,4 +1,4 @@
-import {WelcomeObj, AboutMeObj, SkillsObj, CommandsObj, ExperienceObj, LAGObj, GeneticFBObj, TACObj} from "./PageObjects";
+import {WelcomeObj, AboutMeObj, SkillsObj, READMEObj, ExperienceObj, LAGObj, GeneticFBObj, TACObj, TrivializeObj} from "./PageObjects";
 
 export const tree = {
     label: 'Root',
@@ -6,16 +6,15 @@ export const tree = {
         {
             label: 'Projects',
             directories: [],
-            files: [LAGObj, GeneticFBObj, TACObj]
+            files: [LAGObj, GeneticFBObj, TACObj, TrivializeObj]
         },
         {
             label: 'Kenny',
             directories: [],
-            files: [AboutMeObj, SkillsObj]
+            files: [AboutMeObj, SkillsObj, ExperienceObj,]
         }
-
     ],
-    files: [WelcomeObj, ExperienceObj, CommandsObj]
+    files: [WelcomeObj, READMEObj]
 }
 
 export function convertTreeToArray(node, parent=null, treeArray=[]) {

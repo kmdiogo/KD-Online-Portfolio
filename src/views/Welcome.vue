@@ -1,6 +1,6 @@
 <template>
     <div class="welcome">
-        <video autoplay muted loop class="media-bg coding-bg" style="pointer-events: none">
+        <video autoplay muted loop class="media-bg coding-bg">
             <source src="../assets/media/Coding.mp4" type="video/mp4">
         </video>
 
