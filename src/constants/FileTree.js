@@ -5,7 +5,13 @@ export const tree = {
     directories: [
         {
             label: 'Projects',
-            directories: [],
+            directories: [
+                {
+                    label: 'NANI',
+                    directories: [],
+                    files: [AboutMeObj, SkillsObj, ExperienceObj,]
+                }
+            ],
             files: [LAGObj, GeneticFBObj, TACObj, TrivializeObj]
         },
         {

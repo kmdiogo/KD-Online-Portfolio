@@ -103,28 +103,63 @@
                 }
             },
             processAutoComplete(e) {
+                // TODO: Add tab completion for paths going up directories
                 e.preventDefault();
                 this.parsed = this.line.split(' ');
+
+                let directoryToSearch = this.curDir;
+
+                let path = this.parsed[this.parsed.length-1].split('/');
+
+                if (path[path.length-1] === '') return;
+                if (path.length > 1 && path[1] !== '') {
+                    let cur = this.curDirIndex;
+                    for (let i=0; i < path.length-1; i++) {
+                        cur = this.searchDirectories(path[i], this.treeArray[cur].directories);
+
+                        if (!cur) return;
+                    }
+                    directoryToSearch = this.treeArray[cur];
+                }
+
                 let last = this.parsed.length-1;
 
-                // Search through current directory entries
-                for (let i=0; i < this.curDir.directories.length; i++) {
-                    let nextDir = this.treeArray[this.curDir.directories[i]];
-                    if (this.isOrderedSubstring(this.parsed[last], nextDir.label)) {
-                        this.parsed[last] = nextDir.label + '/';
-                        this.line = this.parsed.join(' ');
-                        return;
-                    }
+
+                let dirSearch = this.searchDirectories(path[path.length-1], directoryToSearch.directories);
+                if (dirSearch) {
+                    path[path.length-1] = this.treeArray[dirSearch].label + '/';
+                    this.parsed[last] = path.join('/');
+                    //this.parsed[last] = this.treeArray[dirSearch].label + '/';
+                    this.line = this.parsed.join(' ');
+                    return;
                 }
 
-                // Search through files
-                for (let i=0; i < this.curDir.files.length; i++) {
-                    if (this.isOrderedSubstring(this.parsed[last], this.curDir.files[i].fileName)) {
-                        this.parsed[last] = this.curDir.files[i].fileName;
-                        this.line = this.parsed.join(' ');
-                    }
+
+                let fileSearch = this.searchFiles(path[path.length-1], directoryToSearch.files);
+                if (fileSearch) {
+                    path[path.length-1] = fileSearch;
+                    this.parsed[last] = path.join('/');
+                    //this.parsed[last] = fileSearch;
+                    this.line = this.parsed.join(' ');
                 }
 
+            },
+            searchDirectories(search, directories) {
+                for (let i=0; i < directories.length; i++) {
+                    let nextDir = this.treeArray[directories[i]];
+                    if (this.isOrderedSubstring(search, nextDir.label)) {
+                        return directories[i];
+                    }
+                }
+                return null;
+            },
+            searchFiles(search, files) {
+                for (let i=0; i < files.length; i++) {
+                    if (this.isOrderedSubstring(search, files[i].fileName)) {
+                        return files[i].fileName;
+                    }
+                }
+                return null;
             },
             isOrderedSubstring(s1, s2) {
                 if (s1.length > s2.length)
@@ -135,6 +170,9 @@
                     }
                 }
                 return true;
+            },
+            preventDefault(e) {
+                e.preventDefault();
             }
         }
     }
