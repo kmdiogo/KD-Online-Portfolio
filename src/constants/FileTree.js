@@ -6,11 +6,11 @@ export const tree = {
         {
             label: 'Projects',
             directories: [
-                {
+                /*{
                     label: 'NANI',
                     directories: [],
                     files: [AboutMeObj, SkillsObj, ExperienceObj,]
-                }
+                }*/
             ],
             files: [LAGObj, GeneticFBObj, TACObj, TrivializeObj]
         },

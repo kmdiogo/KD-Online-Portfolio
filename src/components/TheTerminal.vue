@@ -37,16 +37,11 @@
         methods: {
             processCommand() {
                 this.parsed = this.line.split(' ');
-                if (this.parsed.length > 1) {
-                    if (this.parsed[0] === 'cd') {
-                        this.processChangeDirectory();
-                    }
-                    else if (this.parsed[0] === 'open') {
-                        this.processOpenFile();
-                    }
-                    else {
-                        this.history.push(`Unknown command '${this.parsed[0]}'`);
-                    }
+                if (this.parsed[0] === 'cd') {
+                    this.processChangeDirectory();
+                }
+                else if (this.parsed[0] === 'open') {
+                    this.processOpenFile();
                 }
                 else if (this.parsed[0] === 'clear')
                     this.history = [];
@@ -65,27 +60,39 @@
 
             },
             processChangeDirectory() {
+                if (this.parsed.length < 2) return;
+                if (this.parsed[1] === '') return;
                 let splitPath = this.curDirName.split('/');
-                if (this.parsed[1] === '..' || this.parsed[1] === '../') {
-                    if (this.curDirIndex <= 0) return;
-                    this.curDirIndex = this.treeArray[this.curDirIndex].parent;
-                    if (splitPath.length > 1) {
+
+                // Augmented traverse function to modify path name as traverse is done
+                let pathRaw = this.parsed[1];
+
+                // Append slash if not present at end
+                pathRaw = pathRaw[pathRaw.length-1] === '/' ? pathRaw : pathRaw + '/';
+                let path = pathRaw.split('/');
+                let cur = this.curDirIndex;
+                for (let i=0; i < path.length-1; i++) {
+                    if (path[i] === '..') {
+                        if (this.treeArray[cur].parent == null) return;
+                        cur = this.treeArray[cur].parent;
                         splitPath.pop();
-                        this.curDirName = splitPath.join('/');
                     }
-                    return;
-                }
-                let dirArray = this.treeArray[this.curDirIndex].directories;
-                for (let i=0; i < dirArray.length; i++) {
-                    if (this.treeArray[dirArray[i]].label === this.parsed[1] || this.treeArray[dirArray[i]].label+'/' === this.parsed[1]) {
-                        this.curDirIndex = dirArray[i];
-                        this.curDirName += '/' + this.treeArray[dirArray[i]].label;
-                        return;
+                    else {
+                        cur = this.searchDirectories(path[i], this.treeArray[cur].directories);
+                        if (cur == null) {
+                            this.history.push(`Directory '${this.parsed[1]}' not found`);
+                            return;
+                        }
+                        else  {
+                            splitPath.push(this.treeArray[cur].label);
+                        }
                     }
                 }
-                this.history.push(`Directory '${this.parsed[1]}' not found`);
+                this.curDirIndex = cur;
+                this.curDirName = splitPath.join('/');
             },
             processOpenFile() {
+                // TODO: Rewrite this function to support extended paths
                 let fileIndex = this.curDir.files.findIndex(obj => obj.fileName === this.parsed[1]);
                 if (fileIndex !== -1) {
                     this.$router.push(this.curDir.files[fileIndex].to);
@@ -113,22 +120,27 @@
 
                 if (path[path.length-1] === '') return;
                 if (path.length > 1 && path[1] !== '') {
-                    let cur = this.curDirIndex;
+                    /*let cur = this.curDirIndex;
                     for (let i=0; i < path.length-1; i++) {
-                        cur = this.searchDirectories(path[i], this.treeArray[cur].directories);
+                        if (path[i] === '..') {
+                            if (!this.treeArray[cur].parent) return;
+                            cur = this.treeArray[cur].parent;
+                        }
+                        else
+                            cur = this.searchDirectories(path[i], this.treeArray[cur].directories);
 
                         if (!cur) return;
                     }
-                    directoryToSearch = this.treeArray[cur];
+                    directoryToSearch = this.treeArray[cur];*/
+                    directoryToSearch = this.traversePath(path, this.curDirIndex);
+                    if (directoryToSearch == null) return;
                 }
-
-                let last = this.parsed.length-1;
 
 
                 let dirSearch = this.searchDirectories(path[path.length-1], directoryToSearch.directories);
                 if (dirSearch) {
                     path[path.length-1] = this.treeArray[dirSearch].label + '/';
-                    this.parsed[last] = path.join('/');
+                    this.parsed[this.parsed.length-1] = path.join('/');
                     //this.parsed[last] = this.treeArray[dirSearch].label + '/';
                     this.line = this.parsed.join(' ');
                     return;
@@ -138,11 +150,25 @@
                 let fileSearch = this.searchFiles(path[path.length-1], directoryToSearch.files);
                 if (fileSearch) {
                     path[path.length-1] = fileSearch;
-                    this.parsed[last] = path.join('/');
+                    this.parsed[this.parsed.length-1] = path.join('/');
                     //this.parsed[last] = fileSearch;
                     this.line = this.parsed.join(' ');
                 }
 
+            },
+            traversePath(path, curDirIndex) {
+                let cur = curDirIndex;
+                for (let i=0; i < path.length-1; i++) {
+                    if (path[i] === '..') {
+                        if (this.treeArray[cur].parent == null) return;
+                        cur = this.treeArray[cur].parent;
+                    }
+                    else
+                        cur = this.searchDirectories(path[i], this.treeArray[cur].directories);
+
+                    if (cur == null) return;
+                }
+                return this.treeArray[cur];
             },
             searchDirectories(search, directories) {
                 for (let i=0; i < directories.length; i++) {

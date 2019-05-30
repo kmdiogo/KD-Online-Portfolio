@@ -90,6 +90,7 @@
                 headerFile: null,
                 bodyFile: null,
                 lagScriptName: 'WASM/LAG.js',
+                outputScriptName: 'WASM/wasm_output.js',
                 isInstructionOpen: false
             }
         },
@@ -144,7 +145,7 @@
 
             // Load script that hooks WASM program output to HTML
             let wasmOutputScript = document.createElement('script');
-            wasmOutputScript.setAttribute('src', 'WASM/wasm_output.js');
+            wasmOutputScript.setAttribute('src', this.outputScriptName);
             wasmOutputScript.id = 'wasm-output-script';
             document.head.appendChild(wasmOutputScript);
             console.log("Emscripten Output Script Loaded.");
