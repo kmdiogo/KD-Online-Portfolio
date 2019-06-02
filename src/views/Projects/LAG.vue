@@ -89,8 +89,8 @@
                     'ignore /[whitespace]+/\n',
                 headerFile: null,
                 bodyFile: null,
-                lagScriptName: 'WASM/LAG.js',
-                outputScriptName: 'WASM/wasm_output.js',
+                lagScriptName: 'LAG.js',
+                outputScriptName: 'wasm_output.js',
                 isInstructionOpen: false
             }
         },
