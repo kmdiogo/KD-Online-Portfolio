@@ -2,7 +2,7 @@
     <div class="text-page d-flex flex-column">
         <div class="d-flex">
             <h1 style="color: forestgreen; margin: 0;">Lexical Analyzer Generator</h1>
-            <a href="https://github.com/kmdiogo/LAG" style="margin-left: auto;">
+            <a class="hover-jump" href="https://github.com/kmdiogo/LAG" style="margin-left: auto;">
                 <i class="fab fa-github fa-2x"></i>
             </a>
         </div>

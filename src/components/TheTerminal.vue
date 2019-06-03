@@ -52,6 +52,7 @@
                     this.history.push(`Unknown command '${this.parsed[0]}'`);
                 }
                 this.line = '';
+                this.history.push('<br />');
                 setTimeout(function() {
                     let element = document.getElementById('inner-terminal');
                     element.scrollTop = element.scrollHeight;

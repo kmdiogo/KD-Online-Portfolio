@@ -9,3 +9,8 @@
   50% {transform: translateX(10px)}
   100% {transform: translateX(0px)}
 }
+
+@keyframes jump-up-down {
+  50% {transform: translateY(-3px)}
+  100% {transform: translateY(0px)}
+}

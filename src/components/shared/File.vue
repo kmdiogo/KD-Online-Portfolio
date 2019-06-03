@@ -3,7 +3,7 @@
         <div class="file-icon">
             <i :class="icon" :style="{color: iconColor}"></i>
         </div>
-        <router-link class="router-link" tag="span" :to="to" style="margin-left: 1px;">{{fileName}}</router-link>
+        <router-link class="router-link" :to="to" style="margin-left: 1px;">{{fileName}}</router-link>
         <div v-if="isTab" style="margin-left: 5px;">
             <i class="far fa-window-close close-icon" @click="$store.commit('removeTabFromHistory', label)"></i>
         </div>

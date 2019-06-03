@@ -24,24 +24,6 @@
                     <li>File System Drivers (EXT2)</li>
                 </ul>
             </div>
-            <!--<div class="col-md-6 media-column">
-                <div class="h-super1" style="text-align: left; width: 100%; color: darkslateblue">Media</div>
-                <hr style="width: 100%;" />
-
-                <div class="head-shot-wrapper">
-                    <img class="head-shot" src="../assets/media/Head_Shot.jpg" />
-                    <span style="text-align: center;">Me.jpg</span>
-                </div>
-
-                <transition name="fade">
-                    <div v-if="isVideoVisible" class="breakdance-video-wrapper">
-                        <video autoplay muted loop class="breakdance-video">
-                            <source src="../assets/media/Breakdancing.mp4" type="video/mp4">
-                        </video>
-                        <span>:)</span>
-                    </div>
-                </transition>
-            </div>-->
         </div>
 
     </div>

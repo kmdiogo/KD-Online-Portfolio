@@ -4,7 +4,7 @@
             <h1 style="color: forestgreen; margin: 0;">
                 Trivialize!
             </h1>
-            <a href="https://github.com/kmdiogo/Trivialize" style="margin-left: auto;">
+            <a class="hover-jump" href="https://github.com/kmdiogo/Trivialize" style="margin-left: auto;">
                 <i class="fab fa-github fa-2x"></i>
             </a>
         </div>

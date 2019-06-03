@@ -15,8 +15,8 @@
                 </div>
             </div>
             <div class="name-sig" style="margin-left: auto; font-family: 'Cute Font', cursive;">
-                <a href="https://www.linkedin.com/in/kennethdiogo/"><i class="fab fa-linkedin" style="color: #0077b5; margin-right: 5px;"></i></a>
-                <a href="https://github.com/kmdiogo"><i class="fab fa-github-square"></i></a>
+                <a class="hover-jump" href="https://www.linkedin.com/in/kennethdiogo/"><i class="fab fa-linkedin" style="color: #0077b5; margin-right: 5px;"></i></a>
+                <a class="hover-jump" href="https://github.com/kmdiogo"><i class="fab fa-github-square"></i></a>
                 Kenneth Diogo
             </div>
         </div>

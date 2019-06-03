@@ -15,6 +15,17 @@ a {
   color: white;
 }
 
+.hover-jump:hover {
+  display: inline-block;
+  animation-name: jump-up-down !important;
+  animation-duration: 0.75s !important;
+  animation-iteration-count: infinite !important;
+}
+
+.router-link {
+  text-decoration: none;
+  color: rgb(220,220,220);
+}
 .router-link:hover {
   cursor: pointer;
   color: darkgray;
@@ -104,6 +115,20 @@ a {
                                   supported by Chrome and Opera */
 }
 
+.iframe-container {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+
+.iframe-container iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
 
 
 
