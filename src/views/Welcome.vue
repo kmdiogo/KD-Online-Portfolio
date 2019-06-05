@@ -4,13 +4,13 @@
             <source src="../assets/media/Coding.mp4" type="video/mp4">
         </video>
 
-        <div class="h-super1">
-            <vue-typer text="Hello!"
+        <div class="welcome-text-1" style="text-align: center;">
+            <vue-typer text="Kenny Diogo"
                        :pre-type-delay="500" :repeat="0">
             </vue-typer>
         </div>
-        <div class="h-super2">
-            <vue-typer text="Welcome to My Portfolio"
+        <div class="welcome-text-2" style="text-align: center;">
+            <vue-typer text="Software Developer"
                        :pre-type-delay="2000" :repeat="0">
             </vue-typer>
         </div>
@@ -45,6 +45,12 @@
         justify-content: center;
         align-items: center;
         color: rgb(220,220,200);
+    }
+    .welcome-text-1 {
+        font-size: 7vw;
+    }
+    .welcome-text-2 {
+        font-size: 5vw;
     }
     .coding-bg {
         opacity: 0.15;

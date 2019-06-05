@@ -2,11 +2,12 @@
     <div class="d-flex flex-column">
         <div class="d-flex toolbar-actions align-items-center">
             <div class="dropdown d-md-none">
-                <span class="noselect"><i class="fas fa-list-ul"></i> Pages</span>
+                <span class="noselect mobile-menu-btn"><i class="fas fa-bars fa-lg"></i></span>
                 <div class="dropdown-content">
                     <TheNavigator></TheNavigator>
                 </div>
             </div>
+
             <div class="dropdown">
                 <span class="noselect">Other</span>
                 <div class="dropdown-content">
@@ -17,7 +18,7 @@
             <div class="name-sig" style="margin-left: auto; font-family: 'Cute Font', cursive;">
                 <a class="hover-jump" href="https://www.linkedin.com/in/kennethdiogo/"><i class="fab fa-linkedin" style="color: #0077b5; margin-right: 5px;"></i></a>
                 <a class="hover-jump" href="https://github.com/kmdiogo"><i class="fab fa-github-square"></i></a>
-                Kenneth Diogo
+                <span> Kenneth Diogo</span>
             </div>
         </div>
     </div>
@@ -37,6 +38,10 @@
     @import "../assets/styles/variables";
     .toolbar-actions > div {
         padding: 5px;
+    }
+
+    .mobile-menu-btn {
+        margin-right: 0.25em;
     }
 
     .name-sig {
