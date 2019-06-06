@@ -5,7 +5,7 @@
             <br v-if="history.length > 0"/>
             <div class="d-flex">
                 <span style="margin-right: 5px;">{{curDirName}}> </span>
-                <input class="terminal-input flex-grow-1" v-model="line" @keyup.enter="processCommand" @keyup.tab="processAutoComplete" ref="cmdLine" />
+                <input class="terminal-input flex-grow-1" v-model="line" @keyup.enter="processCommand" @keyup.tab="processAutoComplete" ref="cmdLine" @keyup.up="fillCommandHistory" />
             </div>
         </div>
     </div>
@@ -23,7 +23,9 @@
                 curDirName: 'Root',
                 history: [],
                 parsed: [],
-                treeArray: []
+                treeArray: [],
+                commandHistory: [],
+                historyIndex: -1
             }
         },
         created() {
@@ -35,7 +37,28 @@
             },
         },
         methods: {
+            fillCommandHistory(e) {
+                e.preventDefault();
+                if (this.commandHistory.length > 0) {
+                    console.log("TRUE");
+                    if (this.historyIndex === -1) {
+                        this.historyIndex = this.commandHistory.length-1;
+                        this.line = this.commandHistory[this.historyIndex];
+                    }
+                    else if (this.commandHistory[this.historyIndex] === this.line) {
+                        console.log("TRUE54");
+                        this.historyIndex -= 1;
+                        this.line = this.commandHistory[this.historyIndex];
+                    }
+                    else {
+                        this.historyIndex = this.commandHistory.length-1;
+                        this.line = this.commandHistory[this.historyIndex];
+                    }
+                }
+
+            },
             processCommand() {
+                let validCommand = true;
                 this.parsed = this.line.split(' ');
                 if (this.parsed[0] === 'cd') {
                     this.processChangeDirectory();
@@ -50,6 +73,10 @@
                 }
                 else {
                     this.history.push(`Unknown command '${this.parsed[0]}'`);
+                    validCommand = false;
+                }
+                if (validCommand) {
+                    this.commandHistory.push(this.line);
                 }
                 this.line = '';
                 this.history.push('<br />');

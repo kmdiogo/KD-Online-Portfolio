@@ -6,7 +6,7 @@
         </p>
 
         <p>
-            To navigate the website, use the navigator on the left hand side (or under the 'Files' tab if on mobile) to access the different pages.
+            To navigate the website, use the navigator on the left hand side (or under the dropdown tab if on mobile) to access the different pages.
             Feel free to explore the page, there are some interesting features
             I've included to make the showcase as interactive as possible.
         </p>
