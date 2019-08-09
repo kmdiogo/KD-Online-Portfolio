@@ -1,9 +1,10 @@
 <template>
     <div class="welcome">
-        <video autoplay muted loop class="media-bg coding-bg">
+        <video autoplay muted loop class="media-bg coding-bg" style="width: 100%; height: 100%;">
             <source src="../assets/media/Coding.mp4" type="video/mp4">
         </video>
 
+        <img src="../assets/media/logos/kenny-dilogo-transparent.png" />
         <div class="welcome-text-1" style="text-align: center;">
             <vue-typer text="Kenny Diogo"
                        :pre-type-delay="500" :repeat="0">
