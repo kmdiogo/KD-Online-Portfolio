@@ -19,7 +19,7 @@
                 <a class="hover-jump" href="https://www.linkedin.com/in/kennethdiogo/"><i class="fab fa-linkedin" style="color: #0077b5; margin-right: 5px;"></i></a>
                 <a class="hover-jump mr-1" href="https://github.com/kmdiogo"><i class="fab fa-github-square"></i></a>
                 <span> Kenneth Diogo</span>
-                <img src="../assets/media/logos/kenny-dilogo-white.png" style="width: 4rem" />
+                <img class="ml-1" src="../assets/media/logos/dilogo-light-white.png" style="width: 4rem" />
             </div>
         </div>
     </div>
