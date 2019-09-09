@@ -10,8 +10,8 @@
         </div>
 
         <div class="sub-folder" v-if="isExpanded">
-            <Folder v-for="dir in directories" :directories="dir.directories" :folder-name="dir.label" :files="dir.files"></Folder>
-            <File v-for="file in files" :file-name="file.fileName" :to="file.to" :icon="file.icon" :icon-color="file.iconColor"></File>
+            <Folder v-for="dir in directories" :directories="dir.directories" :folder-name="dir.label" :files="dir.files" :key="dir.label" :data-intro="dir.introJs ? dir.introJs : false"></Folder>
+            <File v-for="file in files" :file-name="file.fileName" :to="file.to" :icon="file.icon" :icon-color="file.iconColor" :key="file.fileName" :data-intro="file.introJs ? file.introJs : false"></File>
             <slot></slot>
         </div>
     </div>

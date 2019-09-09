@@ -1,5 +1,5 @@
 <template>
-    <div class="welcome">
+    <div class="welcome position-relative">
         <video autoplay muted loop class="media-bg coding-bg" style="width: 100%; height: 100%;">
             <source src="../assets/media/Coding.mp4" type="video/mp4">
         </video>
@@ -15,6 +15,7 @@
                        :pre-type-delay="2000" :repeat="0">
             </vue-typer>
         </div>
+        <button @click="onTourClick" style="position: absolute; bottom: 5px; right: 5px;" class="d-none d-md-block">Tour <i class="fas fa-bus-alt"></i></button>
 
     </div>
 </template>
@@ -22,12 +23,18 @@
 <script>
     import {VueTyper} from 'vue-typer'
     import {WelcomeObj} from "../constants/PageObjects";
+    import introJs from 'intro.js/intro';
 
     export default {
         components: {
             VueTyper
         },
         name: "Welcome",
+        methods: {
+            onTourClick() {
+                introJs().start();
+            }
+        },
         beforeRouteEnter(to, from, next) {
             next(vm => {
                 vm.$store.commit('addTabToHistory', WelcomeObj);

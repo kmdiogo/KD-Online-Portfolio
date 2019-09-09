@@ -5,6 +5,7 @@ export const tree = {
     directories: [
         {
             label: 'Projects',
+            introJs: 'Browse my projects here!',
             directories: [
                 /*{
                     label: 'NANI',
@@ -16,12 +17,13 @@ export const tree = {
         },
         {
             label: 'Kenny',
+            introJs: 'Learn about me here!',
             directories: [],
             files: [AboutMeObj, SkillsObj, ExperienceObj,]
         }
     ],
     files: [WelcomeObj, READMEObj]
-}
+};
 
 export function convertTreeToArray(node, parent=null, treeArray=[]) {
     treeArray.push({

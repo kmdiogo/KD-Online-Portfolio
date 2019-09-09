@@ -3,9 +3,11 @@
         <TheToolbar class="the-toolbar-wrapper flex-shrink-0"></TheToolbar>
 
         <div class="content-wrapper">
-            <ResizableContainer initial-size="250px" class="the-navigator-wrapper">
-                <TheNavigator></TheNavigator>
-            </ResizableContainer>
+            <show-at breakpoint="mediumAndAbove">
+                <ResizableContainer initial-size="250px" class="the-navigator-wrapper">
+                    <TheNavigator></TheNavigator>
+                </ResizableContainer>
+            </show-at>
 
             <div class="page-wrapper">
                 <PageTabs class="flex-shrink-0"></PageTabs>
@@ -30,9 +32,10 @@
     import {throttle} from 'lodash'
     import PageTabs from "./components/PageTabs";
     import TheTerminal from "./components/TheTerminal";
+    import {showAt} from 'vue-breakpoints';
 
     export default {
-        components: {TheTerminal, PageTabs, ResizableContainer, TheNavigator, TheFootbar, TheToolbar},
+        components: {TheTerminal, PageTabs, ResizableContainer, TheNavigator, TheFootbar, TheToolbar, showAt},
         methods: {
             // Global mouse events for resizable container
             onMouseUp() {

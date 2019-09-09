@@ -4,7 +4,9 @@
             <div class="dropdown d-md-none">
                 <span class="noselect mobile-menu-btn"><i class="fas fa-bars fa-lg"></i></span>
                 <div class="dropdown-content">
-                    <TheNavigator></TheNavigator>
+                    <show-at breakpoint="mediumAndBelow" :breakpoints="{medium: 768}" >
+                        <TheNavigator></TheNavigator>
+                    </show-at>
                 </div>
             </div>
 
@@ -27,11 +29,10 @@
 
 <script>
     import TheNavigator from "./TheNavigator";
+    import {showAt} from 'vue-breakpoints';
     export default {
         name: "TheToolbar",
-        components: {TheNavigator},
-        methods: {
-        }
+        components: {TheNavigator, showAt}
     }
 </script>
 

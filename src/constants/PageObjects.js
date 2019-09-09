@@ -26,6 +26,7 @@ export const READMEObj = {
     label: 'README.txt',
     fileName: 'README.txt',
     icon: 'fas fa-file-alt',
+    introJs: 'Find out more about the site here!',
     to: '/README'
 };
 

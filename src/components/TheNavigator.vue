@@ -12,9 +12,7 @@
 
 <script>
     import Folder from "./shared/Folder";
-    import File from "./shared/File";
     import {tree} from "../constants/FileTree";
-    import {WelcomeObj, AboutMeObj, SkillsObj, CommandsObj} from "@/constants/PageObjects";
 
     export default {
         name: "TheNavigator",
@@ -23,7 +21,7 @@
                 tree: tree
             }
         },
-        components: {File, Folder},
+        components: {Folder},
     }
 </script>
 
