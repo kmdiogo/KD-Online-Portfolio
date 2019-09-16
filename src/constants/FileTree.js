@@ -1,4 +1,4 @@
-import {WelcomeObj, AboutMeObj, SkillsObj, READMEObj, ExperienceObj, LAGObj, GeneticFBObj, TACObj, TrivializeObj} from "./PageObjects";
+import {WelcomeObj, AboutMeObj, SkillsObj, READMEObj, ExperienceObj, LAGObj, GeneticFBObj, TACObj, TrivializeObj, Ext2ECObj} from "./PageObjects";
 
 export const tree = {
     label: 'Root',
@@ -13,7 +13,7 @@ export const tree = {
                     files: [AboutMeObj, SkillsObj, ExperienceObj,]
                 }*/
             ],
-            files: [LAGObj, GeneticFBObj, TACObj, TrivializeObj]
+            files: [LAGObj, GeneticFBObj, TACObj, TrivializeObj, Ext2ECObj]
         },
         {
             label: 'Kenny',

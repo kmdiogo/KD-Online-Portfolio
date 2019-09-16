@@ -9,6 +9,7 @@ import LAG from './views/Projects/LAG'
 import GeneticFB from './views/Projects/GeneticFB'
 import TAC from './views/Projects/TAC'
 import Trivialize from "./views/Projects/Trivialize";
+import Ext2EC from "./views/Projects/Ext2EC";
 
 import {
   WelcomeObj,
@@ -17,7 +18,7 @@ import {
   SkillsObj,
   AboutMeObj,
   LAGObj,
-  GeneticFBObj, TACObj, TrivializeObj
+  GeneticFBObj, TACObj, TrivializeObj, Ext2ECObj
 } from "./constants/PageObjects";
 
 
@@ -62,6 +63,10 @@ export default new Router({
     {
       path: TrivializeObj.to,
       component: Trivialize
+    },
+    {
+      path: Ext2ECObj.to,
+      component: Ext2EC
     }
   ]
 })

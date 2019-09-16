@@ -68,4 +68,12 @@ export const TrivializeObj = {
     icon: 'fas fa-file-code',
     iconColor: 'darkorange',
     to: '/Trivialize'
-}
+};
+
+export const Ext2ECObj = {
+    label: 'Ext2EC.cc',
+    fileName: 'Ext2EC.cc',
+    icon: 'fas fa-file-code',
+    iconColor: 'lightblue',
+    to: '/IntegrityChecker'
+};
