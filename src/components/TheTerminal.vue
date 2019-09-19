@@ -38,15 +38,15 @@
         },
         methods: {
             fillCommandHistory(e) {
+                // Looks at previous commands and fills in the terminal line when up key is pressed
                 e.preventDefault();
                 if (this.commandHistory.length > 0) {
-                    console.log("TRUE");
+                    // Check if user is scrolling through history or just starting
                     if (this.historyIndex === -1) {
                         this.historyIndex = this.commandHistory.length-1;
                         this.line = this.commandHistory[this.historyIndex];
                     }
                     else if (this.commandHistory[this.historyIndex] === this.line) {
-                        console.log("TRUE54");
                         this.historyIndex -= 1;
                         this.line = this.commandHistory[this.historyIndex];
                     }
@@ -55,10 +55,9 @@
                         this.line = this.commandHistory[this.historyIndex];
                     }
                 }
-
             },
             processCommand() {
-                let validCommand = true;
+                let isValidCommand = true;
                 this.parsed = this.line.split(' ');
                 if (this.parsed[0] === 'cd') {
                     this.processChangeDirectory();
@@ -71,15 +70,21 @@
                 else if (this.parsed[0] === 'ls') {
                     this.processLS();
                 }
+                else if (this.parsed[0] === 'help') {
+                    this.processHelp();
+                }
                 else {
                     this.history.push(`Unknown command '${this.parsed[0]}'`);
-                    validCommand = false;
+                    isValidCommand = false;
                 }
-                if (validCommand) {
+
+                if (isValidCommand) {
                     this.commandHistory.push(this.line);
                 }
                 this.line = '';
                 this.history.push('<br />');
+
+                // Timeout hack scroll terminal scrollbar to top
                 setTimeout(function() {
                     let element = document.getElementById('inner-terminal');
                     element.scrollTop = element.scrollHeight;
@@ -99,6 +104,7 @@
                 pathRaw = pathRaw[pathRaw.length-1] === '/' ? pathRaw : pathRaw + '/';
                 let path = pathRaw.split('/');
                 let cur = this.curDirIndex;
+                // Iterate through file path while traversing the file tree
                 for (let i=0; i < path.length-1; i++) {
                     if (path[i] === '..') {
                         if (this.treeArray[cur].parent == null) return;
@@ -177,6 +183,12 @@
                     this.line = this.parsed.join(' ');
                 }
 
+            },
+            processHelp() {
+                this.history.push('Available commands: ');
+                this.history.push('cd - changes current working directory ');
+                this.history.push('ls - lists out contents of current working directory');
+                this.history.push('open - loads specified page by the given filename');
             },
             traversePath(path, curDirIndex) {
                 let cur = curDirIndex;
