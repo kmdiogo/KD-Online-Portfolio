@@ -1,6 +1,6 @@
 <template>
     <div class="the-footbar text-page">
-        <span class="footbar-item" @click="$store.commit('toggleIsTerminalOpen')">
+        <span class="footbar-item" @click="$store.commit('toggleIsTerminalOpen')" data-intro="You can also browse this site using a CLI!">
             <i class="fas fa-terminal terminal-icon"></i>
             Terminal
         </span>

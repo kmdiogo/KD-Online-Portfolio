@@ -11,7 +11,7 @@
             </div>
 
             <div class="dropdown">
-                <span class="noselect">Other</span>
+                <span class="noselect" data-intro="Download my resume here">Other</span>
                 <div class="dropdown-content">
                     <!--<span>Basic HTML (currently unavailable)</span>-->
                     <span><a class="custom-link" href="Kenneth_Diogo_Resume.pdf" download>Download Resume</a></span>
