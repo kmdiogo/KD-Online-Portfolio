@@ -24,7 +24,7 @@
                     This is a functioning (but rather minimal) command line interface that allows you to navigate through my portfolio!
                 </p>
                 <p>
-                    Currently, the terminal only supports 4 commands:
+                    Currently, the terminal only supports 3 commands:
                 </p>
                 <ul>
                     <li>cd - like most CLIs, this changes the working directory to the specified directory</li>
@@ -40,6 +40,9 @@
         <h2>Credits</h2>
         <p>
             This site was made using Vue.js with Bootstrap 4's grid system to help with responsive design.
+        </p>
+        <p>
+            The tour functionality was implemented using <a href="https://introjs.com/">intro.js</a>
         </p>
         <p>
             Thanks to <a href="https://www.instagram.com/mattmadesomestuff/">Matt Luonuansu</a> for making the awesome logos for this portfolio!

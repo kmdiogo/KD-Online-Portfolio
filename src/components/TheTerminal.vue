@@ -59,23 +59,26 @@
             processCommand() {
                 let isValidCommand = true;
                 this.parsed = this.line.split(' ');
-                if (this.parsed[0] === 'cd') {
-                    this.processChangeDirectory();
-                }
-                else if (this.parsed[0] === 'open') {
-                    this.processOpenFile();
-                }
-                else if (this.parsed[0] === 'clear')
-                    this.history = [];
-                else if (this.parsed[0] === 'ls') {
-                    this.processLS();
-                }
-                else if (this.parsed[0] === 'help') {
-                    this.processHelp();
-                }
-                else {
-                    this.history.push(`Unknown command '${this.parsed[0]}'`);
-                    isValidCommand = false;
+                switch (this.parsed[0]) {
+                    case 'cd':
+                        this.processChangeDirectory();
+                        break;
+                    case 'open':
+                        this.processOpenFile();
+                        break;
+                    case 'clear':
+                        this.history = [];
+                        break;
+                    case 'ls':
+                        this.processLS();
+                        break;
+                    case 'help':
+                        this.processHelp();
+                        break;
+                    default:
+                        this.history.push(`Unknown command '${this.parsed[0]}'`);
+                        this.history.push("Type 'help' to see list of available commands");
+                        isValidCommand = false;
                 }
 
                 if (isValidCommand) {

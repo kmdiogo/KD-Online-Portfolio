@@ -6,6 +6,25 @@
         <hr style="width: 100%;" />
 
 
+        <WorkItem year="2019" month="September" job-title="Research Assistant" company="Youngstown State University">
+            <p>
+                Collaborating with Electrical Engineering department to develop to an Android/IOS mobile application and web server
+                to interface with a Bluetooth Low Energy device to collect pressure sensor readings.
+            </p>
+            <p>Technologies: Android, Django, Vue.js</p>
+        </WorkItem>
+
+        <hr style="width: 100%;" />
+
+        <WorkItem year="2019" month="August" job-title="Software Engineer Intern" company="J.P. Morgan Chase & Co.">
+            <p>Worked in an agile team with 3 other interns to create a web application to help Financial Controllers asses foreign exchange risk</p>
+            <p>Implemented RESTful microservices using Spring Framework</p>
+            <p>Collaborated with end-users to create an intuitive front-end experience using React.js</p>
+            <p>Technologies: React, Bootstrap 4, Cloud Technologies, Java w/ Spring Framework</p>
+        </WorkItem>
+
+        <hr style="width: 100%;" />
+
         <WorkItem year="2018" month="February" job-title="Software Developer" company="Intellitech Corporation">
             <p>Developed Jail Management Systems and Public Safety Software for a variety of counties across the U.S.</p>
             <p>Technologies: ASP.NET MVC, Vue.js, VBA, MicrosoftSQL, WPF</p>
