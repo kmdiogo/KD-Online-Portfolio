@@ -1,4 +1,6 @@
-import {WelcomeObj, AboutMeObj, SkillsObj, READMEObj, ExperienceObj, LAGObj, GeneticFBObj, TACObj, TrivializeObj, Ext2ECObj} from "./PageObjects";
+import {rootRoutes} from "../router/routes/root-routes";
+import {personalRoutes} from "../router/routes/personal-routes";
+import {projectRoutes} from "../router/routes/project-routes";
 
 export const tree = {
     label: 'Root',
@@ -13,16 +15,16 @@ export const tree = {
                     files: [AboutMeObj, SkillsObj, ExperienceObj,]
                 }*/
             ],
-            files: [LAGObj, GeneticFBObj, TACObj, TrivializeObj, Ext2ECObj]
+            files: projectRoutes
         },
         {
             label: 'Kenny',
             introJs: 'Learn about me here!',
             directories: [],
-            files: [AboutMeObj, SkillsObj, ExperienceObj,]
+            files: personalRoutes
         }
     ],
-    files: [WelcomeObj, READMEObj]
+    files: rootRoutes
 };
 
 export function convertTreeToArray(node, parent=null, treeArray=[]) {

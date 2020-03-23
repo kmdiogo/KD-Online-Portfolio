@@ -30,19 +30,12 @@
 </template>
 
 <script>
-    import {AboutMeObj} from "../constants/PageObjects";
-
     export default {
         name: "AboutMe",
         data() {
             return {
                 isVideoVisible: false,
             }
-        },
-        beforeRouteEnter(to, from, next) {
-            next(vm => {
-                vm.$store.commit('addTabToHistory', AboutMeObj);
-            })
         }
     }
 </script>

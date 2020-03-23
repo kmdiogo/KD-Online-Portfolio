@@ -36,15 +36,8 @@
 </template>
 
 <script>
-    import {TACObj} from "../../constants/PageObjects";
-
     export default {
         name: "TAC",
-        beforeRouteEnter(to, from, next) {
-            next(vm=> {
-                vm.$store.commit('addTabToHistory', TACObj);
-            })
-        },
     }
 </script>
 

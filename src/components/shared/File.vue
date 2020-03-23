@@ -5,7 +5,7 @@
         </div>
         <router-link class="router-link" :to="to" style="margin-left: 1px;">{{fileName}}</router-link>
         <div v-if="isTab" style="margin-left: 5px;">
-            <i class="far fa-window-close close-icon" @click="$store.commit('removeTabFromHistory', label)"></i>
+            <i class="far fa-window-close close-icon" @click="$store.commit('removeTabFromHistory', fileName)"></i>
         </div>
 
     </div>
@@ -26,17 +26,14 @@
                 type: String
             },
             to: {
-                type: String,
-                default: ''
+                type: [String, Object],
+                //default: ''
             },
             isTab: {
                 type: Boolean,
                 default: false
-            },
-            label: {
-                type: String,
             }
-        },
+        }
     }
 </script>
 

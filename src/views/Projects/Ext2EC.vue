@@ -22,15 +22,8 @@
 </template>
 
 <script>
-    import {Ext2ECObj} from "../../constants/PageObjects";
-
     export default {
         name: "Ext2EC",
-        beforeRouteEnter(to, from, next) {
-            next(vm=> {
-                vm.$store.commit('addTabToHistory', Ext2ECObj);
-            })
-        }
     }
 </script>
 

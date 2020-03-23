@@ -5,8 +5,7 @@
             <hr />
         </div>
 
-        <Folder :folder-name="tree.label" :directories="tree.directories" :files="tree.files" :is-initially-open="true"></Folder>
-
+        <Folder :folder-name="tree.label" :directories="tree.directories" :file-routes="tree.files" :is-initially-open="true"></Folder>
     </div>
 </template>
 
@@ -18,7 +17,7 @@
         name: "TheNavigator",
         data() {
             return {
-                tree: tree
+                tree
             }
         },
         components: {Folder},

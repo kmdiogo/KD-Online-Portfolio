@@ -11,7 +11,7 @@
                 Collaborating with Electrical Engineering department to develop to an Android/IOS mobile application and web server
                 to interface with a Bluetooth Low Energy device to collect pressure sensor readings.
             </p>
-            <p>Technologies: Android, Django, Vue.js</p>
+            <p>Technologies: Android, Django, Vue.js, Electron</p>
         </WorkItem>
 
         <hr style="width: 100%;" />
@@ -54,17 +54,11 @@
 </template>
 
 <script>
-    import {ExperienceObj} from "../constants/PageObjects";
     import WorkItem from "../components/Experience/WorkItem";
 
     export default {
         name: "Experience",
-        components: {WorkItem,},
-        beforeRouteEnter(to, from, next) {
-            next(vm=> {
-                vm.$store.commit('addTabToHistory', ExperienceObj);
-            })
-        }
+        components: {WorkItem,}
     }
 </script>
 

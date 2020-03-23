@@ -73,7 +73,6 @@
 </template>
 
 <script>
-    import {LAGObj} from "../../constants/PageObjects";
     import {stringToBytes} from "../../utils";
 
     export default {
@@ -149,11 +148,6 @@
             wasmOutputScript.id = 'wasm-output-script';
             document.head.appendChild(wasmOutputScript);
             console.log("Emscripten Output Script Loaded.");
-        },
-        beforeRouteEnter(to, from, next) {
-            next(vm=> {
-                vm.$store.commit('addTabToHistory', LAGObj);
-            })
         },
         beforeRouteLeave(to, from, next) {
             // Remove loaded scripts

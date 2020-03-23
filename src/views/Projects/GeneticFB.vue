@@ -36,20 +36,8 @@
 </template>
 
 <script>
-    import {GeneticFBObj} from "../../constants/PageObjects";
-
     export default {
-        name: "GeneticFB",
-        data() {
-            return {
-
-            }
-        },
-        beforeRouteEnter(to, from, next) {
-            next(vm=> {
-                vm.$store.commit('addTabToHistory', GeneticFBObj);
-            })
-        }
+        name: "GeneticFB"
     }
 </script>
 

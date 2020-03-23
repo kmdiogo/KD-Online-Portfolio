@@ -30,6 +30,7 @@
                     <li>cd - like most CLIs, this changes the working directory to the specified directory</li>
                     <li>ls - lists out contents of current working directory</li>
                     <li>open - loads the specified page by the given filename</li>
+                    <li>clear - clears the terminal</li>
                 </ul>
             </li>
         </ul>
@@ -52,15 +53,9 @@
 </template>
 
 <script>
-    import {READMEObj} from "../constants/PageObjects";
 
     export default {
-        name: "README",
-        beforeRouteEnter(to, from, next) {
-            next(vm => {
-                vm.$store.commit('addTabToHistory', READMEObj);
-            })
-        }
+        name: "README"
     }
 </script>
 

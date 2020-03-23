@@ -22,7 +22,6 @@
 
 <script>
     import {VueTyper} from 'vue-typer'
-    import {WelcomeObj} from "../constants/PageObjects";
     import introJs from 'intro.js/intro';
 
     export default {
@@ -34,11 +33,6 @@
             onTourClick() {
                 introJs().start();
             }
-        },
-        beforeRouteEnter(to, from, next) {
-            next(vm => {
-                vm.$store.commit('addTabToHistory', WelcomeObj);
-            })
         }
     }
 </script>

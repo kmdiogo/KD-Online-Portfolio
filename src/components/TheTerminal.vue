@@ -85,7 +85,6 @@
                     this.commandHistory.push(this.line);
                 }
                 this.line = '';
-                this.history.push('<br />');
 
                 // Timeout hack scroll terminal scrollbar to top
                 setTimeout(function() {
@@ -135,9 +134,10 @@
                 let path = this.parsed[1].split('/');
                 let dir = this.traversePath(path, this.curDirIndex);
                 if (dir != null) {
-                    let fileIndex = dir.files.findIndex(obj => obj.fileName === path[path.length-1]);
+                    let fileIndex = dir.files.findIndex(obj => obj.name === path[path.length-1]);
                     if (fileIndex !== -1) {
-                        this.$router.push(dir.files[fileIndex].to);
+                        if (this.$route.name !== dir.files[fileIndex].name)
+                            this.$router.push({name: dir.files[fileIndex].name});
                     }
                     else {
                         this.history.push(`Cannot find file: '${this.parsed[1]}'`);
@@ -148,12 +148,12 @@
                 }
             },
             processLS() {
-                for (let i=0; i < this.curDir.directories.length; i++) {
-                    this.history.push(`<span style="color: lightblue">${this.treeArray[this.curDir.directories[i]].label}/</span>`);
-                }
-                for (let i=0; i < this.curDir.files.length; i++) {
-                    this.history.push(`<span style="color: blue">${this.curDir.files[i].fileName}</span>`);
-                }
+                this.curDir.directories.forEach(dir => {
+                    this.history.push(`<span style="color: lightblue">${this.treeArray[dir].label}/</span>`);
+                });
+                this.curDir.files.forEach(file => {
+                    this.history.push(`<span style="color: blue">${file.name}</span>`);
+                });
             },
             processAutoComplete(e) {
                 e.preventDefault();
@@ -185,13 +185,13 @@
                     this.parsed[this.parsed.length-1] = path.join('/');
                     this.line = this.parsed.join(' ');
                 }
-
             },
             processHelp() {
                 this.history.push('Available commands: ');
                 this.history.push('cd - changes current working directory ');
                 this.history.push('ls - lists out contents of current working directory');
                 this.history.push('open - loads specified page by the given filename');
+                this.history.push('clear - clears the terminal');
             },
             traversePath(path, curDirIndex) {
                 let cur = curDirIndex;
@@ -218,8 +218,8 @@
             },
             searchFiles(search, files) {
                 for (let i=0; i < files.length; i++) {
-                    if (this.isOrderedSubstring(search, files[i].fileName)) {
-                        return files[i].fileName;
+                    if (this.isOrderedSubstring(search, files[i].name)) {
+                        return files[i].name;
                     }
                 }
                 return null;

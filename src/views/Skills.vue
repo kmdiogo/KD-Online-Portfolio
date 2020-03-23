@@ -42,14 +42,12 @@
 </template>
 
 <script>
-    import {SkillsObj} from "../constants/PageObjects";
-
     export default {
         name: "Skills",
         data() {
             return {
                 languages: ['Javascript', 'Python', 'C#', 'Java', 'HTML/CSS', 'C/C++', 'VBA/VB.NET', 'SQL'],
-                frameworks: ['Jquery', 'Vue.js',
+                frameworks: ['Jquery', 'Vue.js', 'React.js',
                     'ASP.NET', 'Django',
                     'Bootstrap 4'],
                 icons: {
@@ -69,13 +67,7 @@
                 },
                 other: ['RESTful Web Services', 'MVC', 'Full-stack Development', 'Teaching'],
             }
-        },
-        beforeRouteEnter(to, from, next) {
-            next(vm=> {
-                vm.$store.commit('addTabToHistory', SkillsObj);
-            })
         }
-
     }
 </script>
 
