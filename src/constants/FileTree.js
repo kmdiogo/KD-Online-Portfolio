@@ -1,6 +1,6 @@
-import {rootRoutes} from "../router/routes/root-routes";
-import {personalRoutes} from "../router/routes/personal-routes";
-import {projectRoutes} from "../router/routes/project-routes";
+import {rootRoutes} from "@/router/routes/root-routes";
+import {personalRoutes} from "@/router/routes/personal-routes";
+import {projectRoutes} from "@/router/routes/project-routes";
 
 export const tree = {
     label: 'Root',

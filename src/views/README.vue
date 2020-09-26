@@ -46,7 +46,7 @@
             The tour functionality was implemented using <a href="https://introjs.com/">intro.js</a>
         </p>
         <p>
-            Thanks to <a href="https://www.instagram.com/mattmadesomestuff/">Matt Luonuansu</a> for making the awesome logos for this portfolio!
+            Thanks to <a href="https://www.instagram.com/mattmadesomestuff/">Matt Luonuansuu</a> for making the awesome logos for this portfolio!
         </p>
 
     </div>
